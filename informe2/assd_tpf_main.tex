@@ -1,19 +1,8 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
-\usepackage{listings}
-\usepackage{float}
-\usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
-\usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{algorithmic}
-\usepackage{graphicx}
-\usepackage{textcomp}
-\usepackage{xcolor}
-\lstset{basicstyle=\small\ttfamily,columns=fullflexible}
-
 % preambulo:
-%\input{assd_tpf_preamble.tex}
+\input{assd_tpf_preamble.tex}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -22,7 +11,7 @@
 \title{Retoque fotográfico mediante reconstrucciones geométricas heurísticas}
 \author{\IEEEauthorblockN{Ariel Nowik, Joaquin Mestanza, Rocio Parra, Martina Máspero, Marcelo Regueira}
 \IEEEauthorblockA{22.05 - Análisis de Señales y Sistemas Digitales - Grupo 1} \\
-\textit{ITBA: Instituto tecnológico de Buenos Aires}\\
+\textit{ITBA: Instituto Tecnológico de Buenos Aires}\\
 Ciudad de Buenos Aires, Argentina
 }
 \maketitle
@@ -33,13 +22,25 @@ En este trabajo se estudiaron
 \end{abstract}
 
 \section{Introducción}
-El problema elemental a resolver consiste en la eliminación de un objeto no deseado en una imagen.
-Naturalmente no es posible " adivinar" lo que se encuentre por detrás, ya que requiere información adicional, la cual en principio no es accesible, solo se dispone de la imagen. Por lo tanto la idea es, de algun modo asimilar la zona de la imagen a reemplazar con el resto de la misma. En lo que continua de este trabajo describiremos con un mayor detalle diversos métodos para llevar a cabo este proceso.
+Las imágenes son utilizadas diariamente para transmitir distintos tipos de información, desde un anuncio hasta una fotografía, o incluso en un instructivo para el armado de un objeto desmontable. Nos permiten en estos casos interpretar más fácilmente la información que el emisor nos quiere transmitir, que si lo hiciera sólo a través de texto.\par
+En algunos casos la imagen en cuestión puede estar comprimida, contener ruido, o poseer otra característica que implique una calidad más deficiente. En consecuencia, no cumpliría en forma óptima con el objetivo de transmitir la información original. De entre todos los tipos, la característica que se tratará será la presencia de un objeto no deseado en la imagen, y su eliminación.\par
+Se puede pensar en una imagen que representa un espacio determinado, conteniendo diferentes objetos (como un escritorio con útiles). 
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[scale=0.2]{ImagenesAux/desktop.jpg}
+\par\end{centering}
+\caption{Escritorio genérico}
+\end{figure}
+Naturalmente no es posible ``adivinar'' lo que se encuentra por detrás de ellos (que en principio podría ser parte del escritorio), ya que requiere información adicional (como por ejemplo, el escritorio sin los útiles), la cual en principio no es accesible. Por lo tanto la idea es, de algún modo estimar la zona de la imagen que contiene el objeto no deseado utilizando el resto de la misma. En lo que sigue de este trabajo describiremos con mayor detalle diversos métodos para llevar a cabo este proceso.
+%asimilar la zona de la imagen a reemplazar con el resto de la misma.% 
 
+\section{Alternativas exploradas}
+
+\subsection{Exemplar-based image inpainting}
 
 
 \begin{thebibliography}{00}
-\bibitem{b1} A. Criminisi, P. Perez, and K. Toyama, “Region filling and object ´
+\bibitem{b1} A. Criminisi, P. Perez, and K. Toyama, “Region filling and object
 removal by exemplar-based image inpainting,” IEEE T. Image Process.,
 vol. 13, no. 9, pp. 1200–1212, Sep. 2004.
 
