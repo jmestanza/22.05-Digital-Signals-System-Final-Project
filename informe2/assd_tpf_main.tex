@@ -1,0 +1,51 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{listings}
+\usepackage{float}
+\usepackage[spanish, es-tabla, es-nodecimaldot]{babel}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\lstset{basicstyle=\small\ttfamily,columns=fullflexible}
+
+% preambulo:
+%\input{assd_tpf_preamble.tex}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Retoque fotográfico mediante reconstrucciones geométricas heurísticas}
+\author{\IEEEauthorblockN{Ariel Nowik, Joaquin Mestanza, Rocio Parra, Martina Máspero, Marcelo Regueira}
+\IEEEauthorblockA{22.05 - Análisis de Señales y Sistemas Digitales - Grupo 1} \\
+\textit{ITBA: Instituto tecnológico de Buenos Aires}\\
+Ciudad de Buenos Aires, Argentina
+}
+\maketitle
+
+\begin{abstract}
+En este trabajo se estudiaron
+ diversos métodos de retoque de imagenes para eliminar elementos no deseados presentes en diversas fuentes. Finalmente se procedió a realizar una implementación en función de las tecnicas analizadas seguida de un análisis de sus ventajas y desventajas.
+\end{abstract}
+
+\section{Introducción}
+El problema elemental a resolver consiste en la eliminación de un objeto no deseado en una imagen.
+Naturalmente no es posible " adivinar" lo que se encuentre por detrás, ya que requiere información adicional, la cual en principio no es accesible, solo se dispone de la imagen. Por lo tanto la idea es, de algun modo asimilar la zona de la imagen a reemplazar con el resto de la misma. En lo que continua de este trabajo describiremos con un mayor detalle diversos métodos para llevar a cabo este proceso.
+
+
+
+\begin{thebibliography}{00}
+\bibitem{b1} A. Criminisi, P. Perez, and K. Toyama, “Region filling and object ´
+removal by exemplar-based image inpainting,” IEEE T. Image Process.,
+vol. 13, no. 9, pp. 1200–1212, Sep. 2004.
+
+\bibitem{b2} Pierre Buyssens, Maxime Daisy, David Tschumperlé, Olivier Lézoray. Exemplar-based Inpainting:
+Technical Review and new Heuristics for better Geometric Reconstructions. IEEE Transactions on
+Image Processing, Institute of Electrical and Electronics Engineers, 2015, 24 (6), pp.1809 - 1824.
+ff10.1109/TIP.2015.2411437ff. ffhal-01147620f
+\end{thebibliography}
+\end{document}
