@@ -1,26 +1,16 @@
 import cv2
-import numpy as np
-from matplotlib import pyplot as plt
-import matplotlib.image as mpimg
 import imutils
 from numpy import random
-import scipy.misc
 from PIL import Image
-from numpy import sqrt
 import time
-from utils import genSquare
-from utils import getMaxGrad
-from utils import getBorderNormal
-from utils import getTotalSum
-from utils import copyPattern
+import numpy as np
+from utils import *
+import matplotlib.pyplot as plt
 
-# imagen a procesar
-img = cv2.imread('output3/imagen.jpeg', 3)
-# mascara con area a remover.
-# la zona negra (0,0,0) es la que se remueve, la blanca se deja como esta (255,255,255)
+img = cv2.imread('output3/imagen.jpeg', 3) #esto devuelve una matriz de RGB
+# mascara con area a remover. la zona negra (0,0,0) se remueve, la blanca se deja como esta (255,255,255)
 mask = cv2.imread("output3/mask.jpeg")
-# imagen pasada a escala de grises se guarda en esta variable
-grey_scale = np.zeros(img.shape, dtype=np.uint8) #uint8
+
 
 #lado de los cuadrados que utilizaremos para rellenar la imagen
 square_size = 5
@@ -37,34 +27,35 @@ search_times = 100
 
 def procesar(imagen, mask):
     iteraciones = 1000
-
+    #lower y upper son bounds para buscar el color negro con la funcion inRange
     lower = np.array([0, 0, 0])
     upper = np.array([15, 15, 15])
-    # re-mapeamos a 0-1 la mascara. 1 es para la zona retocada, 0 para la que no
+    # re-mapeamos a 0 y 255 la mascara. 255: zona a retocar, 0 a no retocar.
     shapeMask = cv2.inRange(mask, lower, upper)
+    # conseguimos la escala de grises de la imagen
+    grey_scale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    c = shapeMask[:, :] == 0 # maxima confianza en la zona que no se retoca
-
+    # matriz de confianza, 0 o 1, si no se retoca es 1
+    c = shapeMask[:, :] == 0
     for iteracion in range(iteraciones):
-        # primero detectamos el borde de la mascara
-        # conseguimos un arreglo con todos los contornos
-
+        # detectamos el borde de la mascara y conseguimos un arreglo con todos los contornos
         cnts = cv2.findContours(shapeMask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         cnts = imutils.grab_contours(cnts)
         # cada contorno cerrado forma un arreglo
-
         # luego tenemos que calcular la funcion de costos
         best_benefit = 0
         best_benefit_point = None
 
-        # conseguimos la escala de grises
+        # conseguimos la escala de grises de la imagen
         grey_scale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        # conseguimos el gradiente en x e y de la escala de grises, la funcion sobel no solo hace gradiente
-        # sino que suaviza
+        # gradiente en x e y de la escala de grises, sobel suaviza el gradiente
         sobel_x = cv2.Sobel(grey_scale, cv2.CV_64F, 1, 0, ksize=5)
         sobel_y = cv2.Sobel(grey_scale, cv2.CV_64F, 0, 1, ksize=5)
-        sobel_x, sobel_y = -sobel_y,sobel_x
+        # el gradiente siempre apunta en la dirección de máximo crecimiento
+        # y en la curva de nivel, es perpendicular a la tangencial
+        # => nos quedamos con la tangencial (no importa la orientacion)
+        sobel_x, sobel_y = -sobel_y, sobel_x
 
         # por cada contorno cerrado
         for contorno in range(len(cnts)):
@@ -143,6 +134,7 @@ def procesar(imagen, mask):
             print("Iteracion ", iteracion)
             im = Image.fromarray(cv2.cvtColor(im2, cv2.COLOR_BGR2RGB))
             im.save("output3/imagen" + str(iteracion) + ".jpeg")
+
 
 start_time = time.time()
 procesar(img, mask)
