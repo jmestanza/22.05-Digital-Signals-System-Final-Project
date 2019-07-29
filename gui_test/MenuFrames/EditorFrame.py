@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
-from PIL import Image, ImageDraw, ImageTk
-import math as mth
 import ntpath as parser
+from MenuFrames.SubFrames.ImageFrame import ImageFrame
 
 
 class EditorFrame:
@@ -10,9 +9,7 @@ class EditorFrame:
         self.window_ref = main_win
         self.window_ref.clear_title_bkg()
 
-        self.imgOriginal = None
-        self.img_original_aux = None
-        self.img_aux = None
+        self.img_load_path = ""
         self.img_loaded = False
 
         self.editorFrame = tk.Frame()
@@ -46,10 +43,10 @@ class EditorFrame:
         #self.step2Label.pack(side=tk.BOTTOM, ipadx=10, ipady=10)
         self.step2Label.grid(row=2, column=0)
 
-        self.imgFrameWidth = 600
-        self.imgFrameHeight = 300
-        self.imgFrame = tk.Canvas(self.editorFrame, width=self.imgFrameWidth, height=self.imgFrameHeight, bg="grey")
-        self.imgFrame.grid(row=3, columnspan=3)
+        #ENCAPSULAR ESTO:
+        #--------------------
+        self.imgFrame = ImageFrame(self.editorFrame, 3)
+        #--------------------
 
         self.backButton = tk.Button(self.editorFrame, text="Volver", fg="black", command=self.back_req)
         self.backButton.config(font=('Algerian', 20))
@@ -59,36 +56,16 @@ class EditorFrame:
     def choose_img(self):
         #Es un string con el directorio de la imagen
         self.img_load_path = tk.filedialog.askopenfilename(initialdir="/", title="Select file",
-                                                 filetypes=(("PNG files", "*.png"), ("All files", "*.*")))
+                                                           filetypes=(("PNG files", "*.png"), ("All files", "*.*")))
 
         if self.img_load_path:
-            self.save_img_original(self.img_load_path)
+            self.imgFrame.save_img_original(self.img_load_path)
             self.fileLabel.config(text=parser.basename(self.img_load_path))
             self.img_loaded = True
-            self.show_img()
+            self.imgFrame.show_img()
         else:
             if not self.img_loaded:
                 self.fileLabel.config(text="No seleccionado")
-
-    def save_img_original(self, img_file):
-        self.img_original_aux = Image.open(img_file)
-        self.imgOriginal = ImageTk.PhotoImage(self.img_original_aux)
-
-    def show_img(self):
-        if (self.imgOriginal.width() > self.imgFrameWidth) or (self.imgOriginal.height() > self.imgFrameHeight):
-            a = mth.ceil(self.imgOriginal.width() / self.imgFrameWidth)
-            b = mth.ceil(self.imgOriginal.height() / self.imgFrameHeight)
-            if a > b:
-                downsampler = a
-            else:
-                downsampler = b
-        else:
-            downsampler = 1
-
-        img_original_resized = self.img_original_aux.resize((mth.ceil(self.imgOriginal.width()/downsampler),
-                                                            mth.ceil(self.imgOriginal.height()/downsampler)))
-        self.img_aux = ImageTk.PhotoImage(img_original_resized)
-        self.imgFrame.create_image(self.imgFrameWidth/2, self.imgFrameHeight/2, image=self.img_aux)
 
     def back_req(self):
         self.window_ref.view_update("editor_cancel_req")
