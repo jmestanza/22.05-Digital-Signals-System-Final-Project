@@ -37,9 +37,6 @@ class MainWindow:
         self.bkgLabel.destroy()
         self.title.destroy()
 
-    def save_img_original(self, img_file):
-        self.imgOriginal = img_file
-
     def view_update(self, new_req):
         if new_req == "about_window_req":
             self.actualFrame = AboutFrame(self)
@@ -49,6 +46,10 @@ class MainWindow:
             self.actualFrame = HelpFrame(self)
         elif new_req == "editor_window_req":
             self.actualFrame = EditorFrame(self)
+        elif new_req == "editor_cancel_req":
+            self.actualFrame.delete_frame()
+            self.load_title_bkg()
+            self.actualFrame = MainFrame(self)
 
     def exit(self):
         self.actualFrame.delete_frame()
