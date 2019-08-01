@@ -70,7 +70,6 @@ public class CanvasView extends View {
     // override onDraw
     @Override
     protected void onDraw(Canvas canvas) {
-        Log.d("ImageEditLogs", "onDraw");
 
         super.onDraw(canvas);
 

@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.graphics.Path;
 import android.media.Image;
 import android.util.Log;
+import android.util.Pair;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
@@ -23,6 +24,8 @@ import org.opencv.android.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Math.abs;
 
 public class ImageProcessor {
     private Bitmap bitmap;
@@ -37,7 +40,9 @@ public class ImageProcessor {
     private Integer square_size;
 
     private Scalar lower, upper;
-    private Mat confidence, shapeMask; // matriz de confianza
+    private Mat confidence, shapeMask, grey_scale; // matriz de confianza
+    private Mat sobel_x, sobel_y; // espacio para derivadas
+    private List<Pair<Integer,Integer>> square; // cuadrado de busqueda
 
     public ImageProcessor(Context ctx){
         OpenCVLoader.initDebug();
@@ -50,8 +55,8 @@ public class ImageProcessor {
         search_times = ctx.getResources().getInteger(R.integer.search_times);
         square_size = ctx.getResources().getInteger(R.integer.square_size);
 
-        lower = new Scalar(0,0,0);
-        upper = new Scalar(15,15,15);
+        lower = new Scalar(15,15,15);
+        upper = new Scalar(100,100,100);
 
 
     }
@@ -64,15 +69,32 @@ public class ImageProcessor {
         Bitmap bmp32 = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         Utils.bitmapToMat(bmp32, img);
 
+        /** Matrices necesarias para el algoritmo **/
         confidence = new Mat(
                 img.size(),
-                CvType.CV_8SC4
+                CvType.CV_32SC1
         );
 
         shapeMask = new Mat(
                 img.size(),
-                CvType.CV_8SC4
+                CvType.CV_32SC1
         );
+
+        sobel_x = new Mat();
+        sobel_y = new Mat();
+
+        grey_scale = new Mat();
+
+        square = new ArrayList<Pair<Integer,Integer>>();
+
+        for (int i = 0;i < square_size;i++){
+            for (int j = 0;j < square_size;j++){
+                square.add(new Pair<>(
+                        i - square_size / 2,
+                        j - square_size / 2
+                ));
+            }
+        }
     }
     public void setPath(Bitmap bitmap){
         this.pathBitmap = bitmap;
@@ -128,8 +150,79 @@ public class ImageProcessor {
         /// buscamos contornos
         List<MatOfPoint> points = new ArrayList<>();
 
-        Imgproc.findContours(shapeMask.clone(), points, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_NONE);
-        Imgproc.find
+        Core.inRange(flooded, lower, upper,shapeMask);
+
+        Mat hierarchy = new Mat();
+        Imgproc.findContours(shapeMask.clone(), points, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+        hierarchy.release();
+
+        /// Buscamos el mejor beneficio
+        Float best_benefit = 0f;
+        Integer best_benefit_point = null;
+
+        Imgproc.cvtColor(img, grey_scale, Imgproc.COLOR_BGR2GRAY);
+
+        Imgproc.Sobel(grey_scale, sobel_y, 5, 1, 0);
+        Imgproc.Sobel(grey_scale, sobel_x, 5, 0, 1);
+
+        Core.multiply(sobel_x, new Scalar(-1), sobel_x);
+
+
+        for (MatOfPoint contorno : points){ // por cada contorno distinto
+
+            List<Point> border_normal = new ArrayList<>(); // normales al borde
+            Point []local_points = contorno.toArray();
+            int n = local_points.length;
+
+            for (int i = 0;i < n;i++){
+                double dx = local_points[i].x - local_points[(i-1)%n].x;
+                double dy = local_points[i].y - local_points[(i-1)%n].y;
+
+                border_normal.add(new Point(dy, -dx));
+            }
+
+            int index = 0;
+
+            for (Point border_point : local_points){
+                int x = (int)border_point.x;
+                int y = (int)border_point.y;
+
+                double sum_confidence = 0;
+
+                for (Pair<Integer,Integer> dd : square) {
+                    int dy = dd.first;
+                    int dx = dd.second;
+                    double []v = shapeMask.get(y + dy, x + dx);
+
+                    if (v[0] < 0.1f){
+                        // fuera de la zona a retocar
+                        sum_confidence += confidence.get(y + dy, x + dx)[0];
+                    }
+                }
+                sum_confidence /= square.size();
+                double nx = border_normal.get(index).x;
+                double ny = border_normal.get(index).y;
+
+                float max_grad = 0f;
+                Pair<Float,Float> max_grad_value = new Pair<>(0f,0f);
+
+                for (Pair<Integer,Integer> dd : square){
+                    int dy = dd.first;
+                    int dx = dd.second;
+                    double []v = shapeMask.get(y + dy, x + dx);
+
+                    if (v[0] < 0.1f){
+
+                        
+
+                    }
+                }
+
+                index ++;
+            }
+
+        }
+
         Log.d("ImageEditLogs","Contorno encontrado");
 
     }

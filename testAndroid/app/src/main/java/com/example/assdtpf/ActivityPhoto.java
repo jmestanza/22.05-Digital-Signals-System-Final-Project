@@ -139,6 +139,7 @@ public class ActivityPhoto extends AppCompatActivity {
         // empezamos el algoritmo
         // vamos a editar la imagen
 
+        processor.runIteration();
 
     }
 }
