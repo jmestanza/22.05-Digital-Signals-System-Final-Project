@@ -213,7 +213,7 @@ public class ImageProcessor {
 
                     if (v[0] < 0.1f){
 
-                        
+
 
                     }
                 }
