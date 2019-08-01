@@ -15,10 +15,13 @@ public class CanvasView extends View {
     private Canvas mCanvas;
     private Path mPath;
     Context context;
-    private Paint mPaint;
+    private Paint mPaint, mPaint2;
     private float mX, mY;
     private static final float TOLERANCE = 5;
     private Bitmap backgroundBitmap;
+    private int w,h;
+    private Bitmap maskBitmap;
+    private boolean enabled;
 
     public CanvasView(Context c, AttributeSet attrs) {
         super(c, attrs);
@@ -35,6 +38,17 @@ public class CanvasView extends View {
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeWidth(4f);
         //mBitmap = Bitmap.createBitmap(100, 200, Bitmap.Config.ARGB_8888);
+        maskBitmap = null;
+
+        mPaint2 = new Paint();
+        mPaint2.setAntiAlias(true);
+        mPaint2.setColor(Color.BLACK);
+        mPaint2.setStyle(Paint.Style.STROKE);
+        mPaint2.setStrokeJoin(Paint.Join.ROUND);
+        mPaint2.setStrokeWidth(4f);
+        mPaint2.setAlpha(50);
+
+        enabled = true;
     }
 
     // override onSizeChanged
@@ -47,6 +61,9 @@ public class CanvasView extends View {
         backgroundBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
+
+        this.w = w;
+        this.h = h;
     }
 
 
@@ -56,11 +73,20 @@ public class CanvasView extends View {
         Log.d("ImageEditLogs", "onDraw");
 
         super.onDraw(canvas);
+
         canvas.drawBitmap(backgroundBitmap,
                 new Rect(0,0,backgroundBitmap.getWidth(),backgroundBitmap.getHeight()),
                 new Rect(0,0,mBitmap.getWidth(),mBitmap.getHeight()),
                 mPaint
         );
+        if (maskBitmap != null){
+
+            canvas.drawBitmap(maskBitmap,
+                    new Rect(0,0,backgroundBitmap.getWidth(),backgroundBitmap.getHeight()),
+                    new Rect(0,0,mBitmap.getWidth(),mBitmap.getHeight()),
+                    mPaint2
+            );
+        }
         // draw the mPath with the mPaint on the canvas when onDraw
         canvas.drawPath(mPath, mPaint);
     }
@@ -97,22 +123,24 @@ public class CanvasView extends View {
     //override the onTouchEvent
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
+        if (enabled) {
+            float x = event.getX();
+            float y = event.getY();
 
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                startTouch(x, y);
-                invalidate();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                moveTouch(x, y);
-                invalidate();
-                break;
-            case MotionEvent.ACTION_UP:
-                upTouch();
-                invalidate();
-                break;
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    startTouch(x, y);
+                    invalidate();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    moveTouch(x, y);
+                    invalidate();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    upTouch();
+                    invalidate();
+                    break;
+            }
         }
         return true;
     }
@@ -130,10 +158,34 @@ public class CanvasView extends View {
        // paint.setFilterBitmap(true);
         //paint.setDither(true);
         //this.mCanvas.drawColor(0xFFAAAAAA);
+
         this.backgroundBitmap = bitmap;
 
     }
     public Path getPath(){
-        return mPath
+        return mPath;
+    }
+    public Bitmap getCanvasBitmap(){
+        Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawRGB(255,255,255);
+        canvas.drawPath(mPath, mPaint);
+
+
+        return bitmap;
+    }
+    public void setMaskBitmap(Bitmap bitmap){
+        this.maskBitmap = bitmap;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

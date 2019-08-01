@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -28,11 +29,15 @@ public class ActivityPhoto extends AppCompatActivity {
     ImageView imgView;
     final Integer RESULT_LOAD_IMAGE = 1;
     com.javacodegeeks.androidcanvasexample.CanvasView customCanvas;
+    private String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+
+
+        processor = new ImageProcessor(ActivityPhoto.this);
 
         buttonLoadPicture = findViewById(R.id.buttonLoadPicture);
         clearButton = findViewById(R.id.buttonClear);
@@ -53,16 +58,26 @@ public class ActivityPhoto extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                customCanvas.setMaskBitmap(null);
                 customCanvas.clearCanvas();
+                status = "Select border";
+                processButton.setText(R.string.Select);
+                customCanvas.setEnabled(true);
             }
         });
 
         processButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                process();
+                if (status.equals("Select border")) {
+                    process();
+                }else if (status.equals("Wait for confirm")){
+                    startAlgorithm();
+                }
             }
         });
+        status = "Select border";
+        customCanvas.setEnabled(true);
     }
 
     @Override
@@ -86,9 +101,17 @@ public class ActivityPhoto extends AppCompatActivity {
             // String picturePath contains the path of selected Image
             Bitmap image = BitmapFactory.decodeFile(picturePath);
             //imgView.setImageBitmap(image);
-            selectedBitmap = image;
 
-            customCanvas.setmBitmap(image);
+
+            // Rotamos 90 grados
+            Matrix matrix = new Matrix();
+            matrix.postRotate(90);
+            Bitmap rotatedBitmap = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
+
+
+            selectedBitmap = rotatedBitmap;
+
+            customCanvas.setmBitmap(selectedBitmap.copy(selectedBitmap.getConfig(), false));
 
         }
     }
@@ -97,9 +120,25 @@ public class ActivityPhoto extends AppCompatActivity {
     }
 
     public void process(){
-        processor.setBitmap(selectedBitmap);
-        processor.setPath(customCanvas.getPath());
+        processor.setBitmap(selectedBitmap.copy(selectedBitmap.getConfig(), false));
+        processor.setPath(customCanvas.getCanvasBitmap());
 
         processor.computeContours();
+
+        customCanvas.clearCanvas();
+
+        customCanvas.setMaskBitmap(processor.getFloodedBitmap());
+        status = "Wait for confirm";
+        customCanvas.setEnabled(false);
+
+        processButton.setText(R.string.Process);
+
+    }
+
+    public void startAlgorithm(){
+        // empezamos el algoritmo
+        // vamos a editar la imagen
+
+
     }
 }
