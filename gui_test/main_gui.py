@@ -12,6 +12,7 @@ class MainWindow:
         self.window.title("Testing GUI")
         self.window.geometry('960x600')
         self.window.config(bg="white")
+        self.window.resizable(0, 0)
 
         self.imgOriginal = None
         self.bkgImage = None
