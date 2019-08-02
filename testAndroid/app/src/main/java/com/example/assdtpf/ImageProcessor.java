@@ -24,8 +24,10 @@ import org.opencv.android.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.pow;
 
 public class ImageProcessor {
     private Bitmap bitmap;
@@ -43,13 +45,14 @@ public class ImageProcessor {
     private Mat confidence, shapeMask, grey_scale; // matriz de confianza
     private Mat sobel_x, sobel_y; // espacio para derivadas
     private List<Pair<Integer,Integer>> square; // cuadrado de busqueda
-
+    private Random r;
     public ImageProcessor(Context ctx){
         OpenCVLoader.initDebug();
 
         img = null;
         flooded = null;
         this.ctx = ctx;
+        r = new Random();
 
         search_square_size = ctx.getResources().getInteger(R.integer.search_square_size);
         search_times = ctx.getResources().getInteger(R.integer.search_times);
@@ -57,7 +60,6 @@ public class ImageProcessor {
 
         lower = new Scalar(15,15,15);
         upper = new Scalar(100,100,100);
-
 
     }
     public void setBitmap(Bitmap bitmap){
@@ -131,6 +133,8 @@ public class ImageProcessor {
         );
 
         flooded = inputMat;
+
+        flooded.convertTo(confidence, 1, -1, 255);
     }
     public Bitmap getFloodedBitmap(){
         Bitmap outputBitmap = Bitmap.createBitmap(
@@ -143,11 +147,12 @@ public class ImageProcessor {
         return outputBitmap;
     }
 
-    public void runIteration() {
+    public boolean runIteration() {
         /// correr una iteración del algoritmo
 
 
         /// buscamos contornos
+
         List<MatOfPoint> points = new ArrayList<>();
 
         Core.inRange(flooded, lower, upper,shapeMask);
@@ -157,8 +162,8 @@ public class ImageProcessor {
         hierarchy.release();
 
         /// Buscamos el mejor beneficio
-        Float best_benefit = 0f;
-        Integer best_benefit_point = null;
+        double best_benefit = 0d;
+        Pair<Integer,Integer> best_benefit_point = null;
 
         Imgproc.cvtColor(img, grey_scale, Imgproc.COLOR_BGR2GRAY);
 
@@ -167,17 +172,20 @@ public class ImageProcessor {
 
         Core.multiply(sobel_x, new Scalar(-1), sobel_x);
 
+        /****** PARTE 1 ******/
 
         for (MatOfPoint contorno : points){ // por cada contorno distinto
 
+            // ## necesitamos generar las normales de cada punto del contorno
             List<Point> border_normal = new ArrayList<>(); // normales al borde
             Point []local_points = contorno.toArray();
             int n = local_points.length;
 
             for (int i = 0;i < n;i++){
-                double dx = local_points[i].x - local_points[(i-1)%n].x;
-                double dy = local_points[i].y - local_points[(i-1)%n].y;
+                double dx = local_points[i].x - local_points[(i-1+n)%n].x;
+                double dy = local_points[i].y - local_points[(i-1+n)%n].y;
 
+                // # esta formula nos da la normal. no le damos importancia a la orientacion
                 border_normal.add(new Point(dy, -dx));
             }
 
@@ -187,6 +195,7 @@ public class ImageProcessor {
                 int x = (int)border_point.x;
                 int y = (int)border_point.y;
 
+                // # consigo la confianza del punto del contorno actual
                 double sum_confidence = 0;
 
                 for (Pair<Integer,Integer> dd : square) {
@@ -200,11 +209,14 @@ public class ImageProcessor {
                     }
                 }
                 sum_confidence /= square.size();
+
+                // consigo la componente normal del gradiente
                 double nx = border_normal.get(index).x;
                 double ny = border_normal.get(index).y;
 
-                float max_grad = 0f;
-                Pair<Float,Float> max_grad_value = new Pair<>(0f,0f);
+                // # consigo el gradiente mas grande de la region
+                double max_grad = 0d;
+                Pair<Double,Double> max_grad_value = new Pair<>(0d,0d);
 
                 for (Pair<Integer,Integer> dd : square){
                     int dy = dd.first;
@@ -212,10 +224,29 @@ public class ImageProcessor {
                     double []v = shapeMask.get(y + dy, x + dx);
 
                     if (v[0] < 0.1f){
+                        double vx = sobel_x.get(y, x)[0];
+                        double vy = sobel_y.get(y, x)[0];
 
+                        double p = vx * vx + vy * vy;
 
+                        if (p > max_grad){
+                            max_grad = p;
+                            max_grad_value = new Pair<>(vx, vy);
+                        }
 
                     }
+                }
+
+                // producto escalar del gradiente con la normal acorde a la formu
+                double d = max_grad_value.first * nx + max_grad_value.second * ny;
+
+                //el beneficio es la confianza por el factor d
+                double benefit = abs(d * sum_confidence);
+
+                // buscamos maximizar el beneficio
+                if (benefit > best_benefit){
+                    best_benefit = benefit;
+                    best_benefit_point = new Pair<>(x, y);
                 }
 
                 index ++;
@@ -223,7 +254,77 @@ public class ImageProcessor {
 
         }
 
-        Log.d("ImageEditLogs","Contorno encontrado");
+        if (best_benefit_point == null){
+            Log.d("ImageEditLogs","Termino el algoritmo");
+            return false; // significa que terminamos
+
+        }
+
+        /****** PARTE 2 ******/
+
+        int px = best_benefit_point.first;
+        int py = best_benefit_point.second;
+
+        Pair<Integer, Integer> best_patch = new Pair<>(px, py);
+        Double patch_distance = Double.POSITIVE_INFINITY;
+
+        for (Integer i = 0;i < search_times;i++){
+            double sigma = pow((double)search_square_size/2,5);
+            double mu_x = (double)px;
+            double mu_y = (double)py;
+
+            int x = (int)(r.nextGaussian() * sigma + mu_x);
+            int y = (int)(r.nextGaussian() * sigma + mu_y);
+
+            if (shapeMask.get(y, x)[0] > 254d){
+                continue;
+            }
+
+            double total_sum = 0;
+
+            for (int yi = -square_size/2;yi <= square_size/2;yi++){
+                for (int xi = -square_size/2;xi <= square_size/2;xi++){
+                    double sum = 0;
+                    for (int cmp = 0;cmp < 3;cmp++){
+                        int patch = (int)img.get(y + yi, x + xi)[cmp];
+                        int original = (int)img.get(y + yi, x + xi)[cmp];
+
+                        sum += (patch - original) * (patch - original);
+
+                        total_sum += sum;
+                    }
+                }
+            }
+
+            if (total_sum < patch_distance){
+                patch_distance = total_sum;
+                best_patch = new Pair<>(x,y);
+            }
+        }
+
+        int bx = best_patch.first;
+        int by = best_patch.second;
+
+        // ahora ejecutamos las copias
+
+        Rect srcMat = new Rect(
+                px - square_size/2,
+                py - square_size/2,
+                px + square_size/2,
+                py + square_size/2
+        );
+        Rect dstMat = new Rect(
+                bx - square_size/2,
+                by - square_size/2,
+                bx + square_size/2,
+                by + square_size/2
+        );
+
+        img.submat(srcMat).copyTo( img.submat(dstMat) );
+        confidence.submat(srcMat).copyTo( confidence.submat(dstMat) );
+        flooded.submat(srcMat).copyTo( flooded.submat(dstMat) );
+
+        return true;
 
     }
 }
