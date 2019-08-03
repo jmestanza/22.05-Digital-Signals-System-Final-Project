@@ -17,17 +17,20 @@ import android.graphics.Path;
 import android.media.Image;
 import android.util.Log;
 import android.util.Pair;
+import android.view.WindowId;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.android.Utils;
 
+import java.nio.DoubleBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
+import static org.opencv.core.CvType.*;
 
 public class ImageProcessor {
     private Bitmap bitmap;
@@ -46,20 +49,49 @@ public class ImageProcessor {
     private Mat sobel_x, sobel_y; // espacio para derivadas
     private List<Pair<Integer,Integer>> square; // cuadrado de busqueda
     private Random r;
+    private ThreadProcess thread;
+    private Long iterations;
+    private UpdateImageListener updateImageListener;
+    private Integer height, width;
+    private Mat black;
+    private FinishProcessListener finishListener;
+
     public ImageProcessor(Context ctx){
         OpenCVLoader.initDebug();
 
         img = null;
         flooded = null;
         this.ctx = ctx;
+        thread = new ThreadProcess();
+        iterations = 0l;
+        finishListener = null;
+
+        thread.setListener(new ThreadListener() {
+            @Override
+            public boolean runThread() {
+                return runIteration();
+            }
+            public void threadFinish(){
+                if (finishListener != null) {
+                    finishListener.finish();
+                }
+            }
+        });
+
         r = new Random();
 
         search_square_size = ctx.getResources().getInteger(R.integer.search_square_size);
         search_times = ctx.getResources().getInteger(R.integer.search_times);
         square_size = ctx.getResources().getInteger(R.integer.square_size);
 
-        lower = new Scalar(15,15,15);
-        upper = new Scalar(100,100,100);
+        lower = new Scalar(100);
+        upper = new Scalar(150);
+
+        height = ctx.getResources().getInteger(R.integer.height);
+        width = ctx.getResources().getInteger(R.integer.width);
+
+
+        black = new Mat(square_size, square_size, CV_8UC1, new Scalar(0));
 
     }
     public void setBitmap(Bitmap bitmap){
@@ -69,7 +101,11 @@ public class ImageProcessor {
 
         this.bitmap = bitmap;
         Bitmap bmp32 = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-        Utils.bitmapToMat(bmp32, img);
+
+        Mat aux = new Mat();
+        Utils.bitmapToMat(bmp32, aux);
+        Size sz = new Size(this.width,this.height);
+        Imgproc.resize(aux, img ,sz);
 
         /** Matrices necesarias para el algoritmo **/
         confidence = new Mat(
@@ -116,7 +152,7 @@ public class ImageProcessor {
         Bitmap bmp32 = pathBitmap.copy(Bitmap.Config.ARGB_8888, true);
         Utils.bitmapToMat(bmp32, inputMatSmall);
 
-        Size sz = new Size(bitmap.getWidth(),bitmap.getHeight());
+        Size sz = new Size(this.width,this.height);
         Imgproc.resize( inputMatSmall, grayImage, sz );
 
         Imgproc.cvtColor(grayImage, inputMat, Imgproc.COLOR_BGR2GRAY);
@@ -138,15 +174,22 @@ public class ImageProcessor {
     }
     public Bitmap getFloodedBitmap(){
         Bitmap outputBitmap = Bitmap.createBitmap(
-                bitmap.getWidth(),
-                bitmap.getHeight(),
+                width,
+                height,
                 Bitmap.Config.ARGB_8888
         );
 
         Utils.matToBitmap(flooded, outputBitmap);
         return outputBitmap;
     }
-
+    public void startAlgorithm(){
+        Log.d("ImageEditLogs","Algorithm started");
+        this.thread.start();
+        /*for (int i = 0;i < 11;i++) {
+            Log.d("ImageEditLogs","Running iteration "+i);
+            runIteration();
+        }*/
+    }
     public boolean runIteration() {
         /// correr una iteración del algoritmo
 
@@ -158,11 +201,11 @@ public class ImageProcessor {
         Core.inRange(flooded, lower, upper,shapeMask);
 
         Mat hierarchy = new Mat();
-        Imgproc.findContours(shapeMask.clone(), points, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+        Imgproc.findContours(flooded.clone(), points, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
         hierarchy.release();
 
         /// Buscamos el mejor beneficio
-        double best_benefit = 0d;
+        double best_benefit = Double.NEGATIVE_INFINITY;
         Pair<Integer,Integer> best_benefit_point = null;
 
         Imgproc.cvtColor(img, grey_scale, Imgproc.COLOR_BGR2GRAY);
@@ -269,14 +312,16 @@ public class ImageProcessor {
         Double patch_distance = Double.POSITIVE_INFINITY;
 
         for (Integer i = 0;i < search_times;i++){
-            double sigma = pow((double)search_square_size/2,5);
+            double sigma = (double)search_square_size/32;
             double mu_x = (double)px;
             double mu_y = (double)py;
 
             int x = (int)(r.nextGaussian() * sigma + mu_x);
             int y = (int)(r.nextGaussian() * sigma + mu_y);
 
-            if (shapeMask.get(y, x)[0] > 254d){
+            double []v = shapeMask.get(y , x );
+
+            if (v[0] > 254d){
                 continue;
             }
 
@@ -306,25 +351,64 @@ public class ImageProcessor {
         int by = best_patch.second;
 
         // ahora ejecutamos las copias
-
+        //Log.d("ImageEditLogs","square size = " + square_size);
         Rect srcMat = new Rect(
-                px - square_size/2,
-                py - square_size/2,
-                px + square_size/2,
-                py + square_size/2
-        );
-        Rect dstMat = new Rect(
                 bx - square_size/2,
                 by - square_size/2,
-                bx + square_size/2,
-                by + square_size/2
+                square_size,
+                square_size
+                );
+        Rect dstMat = new Rect(
+                px - square_size/2,
+                py - square_size/2,
+                square_size,
+                square_size
         );
 
-        img.submat(srcMat).copyTo( img.submat(dstMat) );
-        confidence.submat(srcMat).copyTo( confidence.submat(dstMat) );
-        flooded.submat(srcMat).copyTo( flooded.submat(dstMat) );
+        //Log.d("ImageEditLogs", srcMat.x + " " + srcMat.y + " -> " + dstMat.x + " " + dstMat.y);
+        img.submat(srcMat).clone().copyTo( img.submat(dstMat) );
+        confidence.submat(srcMat).clone().copyTo( confidence.submat(dstMat) );
+
+        black.copyTo( flooded.submat(dstMat));
+        //white.clone().copyTo( flooded.submat(dstMat) );
+
+        if (iterations % 10 == 0){
+            //Log.d("ImageEditLogs", "Actualizando imagen");
+            Bitmap outputBitmap = Bitmap.createBitmap(
+                    width,
+                    height,
+                    Bitmap.Config.ARGB_8888
+            );
+
+            Utils.matToBitmap(img, outputBitmap);
+
+            this.updateImageListener.updateImage(
+                    outputBitmap.copy(outputBitmap.getConfig(), false)
+            );
+        }
+        iterations ++;
 
         return true;
 
+    }
+
+    public UpdateImageListener getUpdateImageListener() {
+        return updateImageListener;
+    }
+
+    public void setUpdateImageListener(UpdateImageListener updateImageListener) {
+        this.updateImageListener = updateImageListener;
+    }
+
+    public void cancel(){
+        this.thread.finish();
+    }
+
+    public FinishProcessListener getFinishListener() {
+        return finishListener;
+    }
+
+    public void setFinishListener(FinishProcessListener finishListener) {
+        this.finishListener = finishListener;
     }
 }

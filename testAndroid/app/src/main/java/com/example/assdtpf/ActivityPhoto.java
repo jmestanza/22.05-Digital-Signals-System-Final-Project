@@ -17,8 +17,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
-public class ActivityPhoto extends AppCompatActivity {
+public class ActivityPhoto extends AppCompatActivity{
     Button buttonLoadPicture;
     Button clearButton;
     Button processButton;
@@ -30,6 +31,7 @@ public class ActivityPhoto extends AppCompatActivity {
     final Integer RESULT_LOAD_IMAGE = 1;
     com.javacodegeeks.androidcanvasexample.CanvasView customCanvas;
     private String status;
+    private ProgressWheel wheel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,12 @@ public class ActivityPhoto extends AppCompatActivity {
         buttonLoadPicture = findViewById(R.id.buttonLoadPicture);
         clearButton = findViewById(R.id.buttonClear);
         processButton = findViewById(R.id.ProcessButton);
+        wheel = findViewById(R.id.LoadingIcon);
 
         customCanvas = (com.javacodegeeks.androidcanvasexample.CanvasView) findViewById(R.id.Canvas);
+
+        wheel.bringToFront();
+
 
         buttonLoadPicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,14 +61,34 @@ public class ActivityPhoto extends AppCompatActivity {
             }
         });
 
+
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                customCanvas.setMaskBitmap(null);
-                customCanvas.clearCanvas();
-                status = "Select border";
-                processButton.setText(R.string.Select);
-                customCanvas.setEnabled(true);
+                if (status.equals("Select border")) {
+
+                    wheel.setVisibility(View.INVISIBLE);
+                    customCanvas.setMaskBitmap(null);
+                    customCanvas.clearCanvas();
+                    status = "Select border";
+                    processButton.setText(R.string.Select);
+                    customCanvas.setEnabled(true);
+                }else if(status.equals("Wait for confirm")){
+                    customCanvas.setMaskBitmap(null);
+                    customCanvas.clearCanvas();
+                    status = "Select border";
+                    processButton.setText(R.string.Select);
+                    customCanvas.setEnabled(true);
+                }else if(status.equals("Processing") ){
+                    customCanvas.setMaskBitmap(null);
+                    customCanvas.clearCanvas();
+                    status = "Select border";
+                    processButton.setText(R.string.Select);
+                    processButton.setEnabled(true);
+                    customCanvas.setEnabled(true);
+                    processor.cancel();
+
+                }
             }
         });
 
@@ -73,9 +99,29 @@ public class ActivityPhoto extends AppCompatActivity {
                     process();
                 }else if (status.equals("Wait for confirm")){
                     startAlgorithm();
+                    wheel.setVisibility(View.VISIBLE);
                 }
             }
         });
+
+        processor.setUpdateImageListener(new UpdateImageListener() {
+            @Override
+            public void updateImage(Bitmap bitmap) {
+                customCanvas.setmBitmap(bitmap);
+                customCanvas.setMaskBitmap(processor.getFloodedBitmap());
+                customCanvas.clearCanvas();
+            }
+        });
+        processor.setFinishListener(new FinishProcessListener() {
+            @Override
+            public void finish() {
+                status = "Finish";
+                wheel.setVisibility(View.INVISIBLE);
+                processButton.setText("SAVE");
+                processButton.setEnabled(true);
+            }
+        });
+
         status = "Select border";
         customCanvas.setEnabled(true);
     }
@@ -103,16 +149,22 @@ public class ActivityPhoto extends AppCompatActivity {
             //imgView.setImageBitmap(image);
 
 
+
             // Rotamos 90 grados
             Matrix matrix = new Matrix();
             matrix.postRotate(90);
-            Bitmap rotatedBitmap = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
-
-
+            Bitmap rotatedBitmap = Bitmap.createBitmap(
+                    image,
+                    0,
+                    0,
+                    image.getWidth(),
+                    image.getHeight(),
+                    matrix,
+                    true
+            );
             selectedBitmap = rotatedBitmap;
 
             customCanvas.setmBitmap(selectedBitmap.copy(selectedBitmap.getConfig(), false));
-
         }
     }
     public void clearCanvas(View v) {
@@ -139,7 +191,11 @@ public class ActivityPhoto extends AppCompatActivity {
         // empezamos el algoritmo
         // vamos a editar la imagen
 
-        processor.runIteration();
+        processor.startAlgorithm();
+        status = "Processing";
+        processButton.setText(R.string.Loading);
+        processButton.setEnabled(false);
+
 
     }
 }

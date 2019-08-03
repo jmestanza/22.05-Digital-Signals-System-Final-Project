@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="square_size">5</integer>
+    <integer name="square_size">6</integer>
     <integer name="search_square_size">1000</integer>
-    <integer name="search_times">100</integer>
-
+    <integer name="search_times">50</integer>
+    <integer name="width">600</integer>
+    <integer name="height">600</integer>
 </resources>

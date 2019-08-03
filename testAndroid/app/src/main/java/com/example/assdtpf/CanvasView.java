@@ -46,7 +46,7 @@ public class CanvasView extends View {
         mPaint2.setStyle(Paint.Style.STROKE);
         mPaint2.setStrokeJoin(Paint.Join.ROUND);
         mPaint2.setStrokeWidth(4f);
-        mPaint2.setAlpha(50);
+        mPaint2.setAlpha(100);
 
         enabled = true;
     }
@@ -70,7 +70,6 @@ public class CanvasView extends View {
     // override onDraw
     @Override
     protected void onDraw(Canvas canvas) {
-
         super.onDraw(canvas);
 
         canvas.drawBitmap(backgroundBitmap,
@@ -79,7 +78,6 @@ public class CanvasView extends View {
                 mPaint
         );
         if (maskBitmap != null){
-
             canvas.drawBitmap(maskBitmap,
                     new Rect(0,0,backgroundBitmap.getWidth(),backgroundBitmap.getHeight()),
                     new Rect(0,0,mBitmap.getWidth(),mBitmap.getHeight()),
@@ -122,7 +120,7 @@ public class CanvasView extends View {
     //override the onTouchEvent
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (enabled) {
+        //if (enabled) {
             float x = event.getX();
             float y = event.getY();
 
@@ -140,7 +138,7 @@ public class CanvasView extends View {
                     invalidate();
                     break;
             }
-        }
+        //}
         return true;
     }
 
