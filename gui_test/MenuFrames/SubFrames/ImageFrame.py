@@ -17,6 +17,8 @@ class ImageFrame:
         self.imgOriginal = None
         self.img_original_aux = None
         self.imgAux = None
+        self.image1 = None
+        self.draw = None
         self.img_resized_w = 0
         self.img_resized_h = 0
         self.downsample = 0
@@ -25,28 +27,31 @@ class ImageFrame:
         self.pointShowList = []  # Conjunto de los puntos creados con circulos
 
     def start_coord(self, event):
-        self.plot_point(event.x, event.y)
-        self.pointList.append(event.x)
-        self.pointList.append(event.y)
-
-    def plot_point(self, coord_x, coord_y):
-        self.pointShowList.append(self.imgFrame.create_oval(coord_x-2, coord_y-2, coord_x+2, coord_y+2, fill="black"))
+        if self.imgOriginal:
+            self.pointShowList.append(self.imgFrame.create_oval(event.x-2, event.y-2,
+                                                                event.x+2, event.y+2, fill="black"))
+            self.pointList.append(event.x)
+            self.pointList.append(event.y)
 
     def plot_poly(self, event):
-        self.imgFrame.create_polygon(self.pointList, fill="black")
+        if len(self.pointList) >= 4:
+            self.imgFrame.create_polygon(self.pointList, fill="black")
+            self.fix_coord()
+            self.draw.polygon(self.pointList, fill='black')
+
         for i in range(0, len(self.pointShowList), 1):
             self.imgFrame.delete(self.pointShowList[i])
 
+        self.pointList.clear()
+        self.pointShowList.clear()
+
     def create_mask(self):
-        image1 = Image.new("RGB", (self.imgOriginal.width(), self.imgOriginal.height()), "white")
-        draw = ImageDraw.Draw(image1)
-        self.fix_coord()
-        draw.polygon(self.pointList, fill='black')
-        image1.save('testmask.png')
+        self.image1.save('testmask.png')
+        #  Hay que seguir desde aca
 
     def fix_coord(self):
         for i in range(0, len(self.pointList), 1):
-            if i%2 == 0:
+            if i % 2 == 0:
                 self.pointList[i] = mth.ceil((self.pointList[i] -
                                               ((self.width - self.img_resized_w)/2))*self.downsample)
             else:
@@ -56,6 +61,8 @@ class ImageFrame:
     def save_img_original(self, img_file):
         self.img_original_aux = Image.open(img_file)
         self.imgOriginal = ImageTk.PhotoImage(self.img_original_aux)
+        self.image1 = Image.new("RGB", (self.imgOriginal.width(), self.imgOriginal.height()), "white")
+        self.draw = ImageDraw.Draw(self.image1)
 
     def show_img(self):
         if (self.imgOriginal.width() > self.width) or (self.imgOriginal.height() > self.height):
@@ -73,4 +80,3 @@ class ImageFrame:
         img_resized = self.img_original_aux.resize((self.img_resized_w, self.img_resized_h))
         self.imgAux = ImageTk.PhotoImage(img_resized)
         self.imgFrame.create_image(self.width/2, self.height/2, image=self.imgAux)
-        #Cuando haya que convertir las coordenadas tengo que hacer regla de 3
