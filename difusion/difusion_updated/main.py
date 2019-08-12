@@ -2,6 +2,8 @@ import cv2
 import imutils
 from PIL import Image
 import time
+import numpy as np
+import itertools
 from utils import *
 import matplotlib.pyplot as plt
 from itertools import combinations
@@ -41,7 +43,6 @@ def getMinimumNeighbours(shapeMask, x, y):
 
     return max_uv_conf
 
-
 def replaceInsideBorder(u, v, shapeMask, image):
     ady_pos = [[u, v - 1], [u + 1, v], [u, v + 1], [u - 1, v]]
     for p in ady_pos:
@@ -53,7 +54,6 @@ def replaceInsideBorder(u, v, shapeMask, image):
     return
 
 def updateInsideBorder(u, v, imagen, k):
-
     cols = 3
     rows = 3
     rgb_els = 3
@@ -72,52 +72,89 @@ def updateInsideBorder(u, v, imagen, k):
         imagen[v][u][l] = sumanum[l] / sumaden[l]
     return
 
+def belongsToNeighbourhood(pixel,i,j):
+    ans = False
+    neighbours_index = [element for element in itertools.product([1,-1],[1,-1])]
+    x, y = pixel
+    pos = [x, y]
+    possible_nh = [i,j]
+    for ng_index in neighbours_index:
+        if np.array_equal(np.add(pos,ng_index),possible_nh):
+            ans = True
+    return ans
+
+def gfactor(grad_xy, K=10000):
+    return 1/(1 + (np.linalg.norm(grad_xy))**2/K)
+
+def getMatrixA(pixel, tau, grad):
+    A = np.zeros((9, 9))
+    x, y = pixel
+    gx, gy = grad
+    for i in range(9):
+        for j in range(9):
+            if belongsToNeighbourhood(pixel, i, j): #estoy en la vecindad
+                A[i][j] = -tau*gfactor(grad[y][x])
+            elif j == i: #estoy en el centro
+                suma = 1
+                neighbours_index = [element for element in itertools.product([1, -1], [1, -1])]
+                for ng_index in neighbours_index:
+                    di, dj = ng_index
+                    grad_xy = [gx[x+dj], gy[y+di]]
+                    suma += tau*gfactor(grad_xy)
+                A[i][i] = suma
+            else:
+                A[i][j] = 0
+    return A
+
 def procesar(imagen, mask, iteraciones):
     # re-mapeamos a 0 y 255 la mascara. 255: zona a retocar, 0 a no retocar.
     shapeMask = jpeg2MatrixMask(mask)
     # matriz de confianza, 0 o 1, si no se retoca es 1
     c = shapeMask[:, :] == 0
-
+    aux_img = imagen.copy()
     for iteracion in range(iteraciones):
 
-        best_benefit = 0
-        best_benefit_point = None
-
-        shapeMask = jpeg2MatrixMask(mask)
-
+        # shapeMask = jpeg2MatrixMask(mask)
         # detectamos el borde de la mascara y conseguimos un arreglo con todos los contornos
         # cnts me da los contornos cerrados (los que se van achicando segun el algoritmo)
         cnts = cv2.findContours(shapeMask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         cnts = imutils.grab_contours(cnts)
 
-        # conseguimos la escala de grises de la imagen (intensidad)
-        grey_scale = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-
-        #grey_scale_gradient = getGradient(grey_scale)
-
+        tau = 10
         for contorno in range(len(cnts)):
-            borde = cnts[contorno]
-            for index,border_point in enumerate(cnts[contorno]):
+            memory = {}
+            for index, border_point in enumerate(cnts[contorno]):
+                grey_scale = cv2.cvtColor(aux_img, cv2.COLOR_BGR2GRAY)
+                grey_scale_gradient = getGradient(grey_scale)
                 x, y = border_point[0]
-
-                # el borde esta en la zona de confianza
                 u, v = getMinimumNeighbours(shapeMask, x, y)
+                pixel = [u, v]
+                I = [[], [], []]
+                I_0 = imagen[u][v]
+                A = np.asarray(getMatrixA(pixel, tau, grey_scale_gradient))
+                for k in range(3): #R,G,B la siguiente linea es I[k] (t+1)
+                    if not I[k]:
+                        b = [I_0[k]]*9 # si no hay ninguno empiezo con I_0
+                    else:
+                        b = I[k][-1] #agarro el ultimo
 
-                #lo que esta dentro de la frontera es [0,0,0]
-                replaceInsideBorder(u, v, shapeMask, imagen)
-                updateInsideBorder(u, v, imagen, k=1)
+                    I[k] = np.linalg.solve(A, b)
 
-                # updateo la confianza
-                shapeMask[u][v] = 0
+                for i in range(9):
+                    aux_img[u][v+i] = [I[0][i], I[1][i], I[2][i]]
+                # # updateo la confianza
+                    shapeMask[u][v+i] = 0
+                    pos = u, v+i
+                    drawRect(imagen, pos, 1, [0, 0, 255])
 
-        if iteracion % 100 == 0:
-            print("Iteracion ", iteracion)
-            im = Image.fromarray(cv2.cvtColor(imagen, cv2.COLOR_BGR2RGB))
-            im.save("output3/imagen" + str(iteracion) + ".jpeg")
+        #if iteracion % 100 == 0:
+        print("Iteracion ", iteracion)
+        im = Image.fromarray(cv2.cvtColor(imagen, cv2.COLOR_BGR2RGB))
+        im.save("output3/imagen" + str(iteracion) + ".jpeg")
 
 
 start_time = time.time()
-iteraciones = 1000
+iteraciones = 10
 procesar(img, mask,iteraciones)
 end_time = time.time()
 print("se calculo en:", (end_time-start_time)/60, " minutos")
