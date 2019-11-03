@@ -86,7 +86,7 @@ def procesar(imagen, mask, iteraciones):
 
 
 start_time = time.time()
-iteraciones = 10000
+iteraciones = 500
 procesar(img, mask,iteraciones)
 end_time = time.time()
 print("se calculo en:", (end_time-start_time)/60, " minutos")

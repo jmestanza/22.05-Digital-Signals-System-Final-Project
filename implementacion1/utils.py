@@ -2,7 +2,6 @@ import numpy as np
 import random
 import cv2
 
-
 def genSquare(square_size):
     square = []
     for i in range(square_size):
@@ -64,17 +63,9 @@ def getMaxGrad(square, shapeMask, x, y, gradient):
 
     return max_grad_value
 
-
-def getTotalSum(imagen,square_size,x,y,px,py):
-    terms = []
-    for yi in range(-square_size // 2, square_size // 2):
-        for xi in range(-square_size // 2, square_size // 2):
-            for cmp in range(3):
-                patch = int(imagen[y + yi][x + xi][cmp])
-                original = int(imagen[py + yi][px + xi][cmp])
-                terms.append((patch - original) ** 2)
-    return sum(terms), terms[-1]
-
+def getTotalSum(imagen,sq_sz,x,y,px,py):
+    return np.sum(np.square(imagen[y-sq_sz//2: y+sq_sz//2][x-sq_sz//2: x+sq_sz//2]-
+           imagen[py-sq_sz//2: py+sq_sz//2][px-sq_sz//2: px+sq_sz//2]))
 
 def copyPattern(imagen, square_size, best_benefit_point, minDistPatch, c, mask):
     px, py = best_benefit_point
@@ -116,10 +107,11 @@ def getMinDistPatch(best_benefit_point,search_times,search_square_size,shapeMask
         if shapeMask[y, x] == 255:
             continue  # no es de interes ya que esta en la region blanca
 
-        total_sum, last_patch_distance = getTotalSum(imagen, square_size, x, y, px, py)
+        total_sum = getTotalSum(imagen, square_size, x, y, px, py)
 
         if total_sum < patch_distance:
-            patch_distance = last_patch_distance
+            patch_distance = total_sum
+                #last_patch_distance
             best_patch = x, y
 
     return best_patch

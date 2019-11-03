@@ -1,20 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="528253a3-f8c4-4725-b320-f4b9c4b498d7" name="Default Changelist" comment="" />
+    <list default="true" id="528253a3-f8c4-4725-b320-f4b9c4b498d7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../difusion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../difusion/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen0.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen0.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen100.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen100.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1000.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1020.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1040.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1060.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1080.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1100.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1120.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1140.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1160.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1180.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen120.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen120.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1200.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1220.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1240.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1260.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1280.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1300.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1320.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1340.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1360.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1380.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen140.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen140.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1400.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1420.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1440.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1460.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1480.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1500.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1520.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1540.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1560.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1580.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen160.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen160.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1600.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1620.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1640.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1660.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1680.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1700.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1720.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1740.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1760.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1780.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen180.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen180.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1820.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1840.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1860.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1880.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1900.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1920.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1940.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1960.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen1980.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen20.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen20.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen200.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen200.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2000.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2020.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2040.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2060.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2080.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2100.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2120.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2140.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2160.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2180.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen220.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen220.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2200.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2220.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2240.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2260.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2280.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2300.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2320.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2340.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2360.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2380.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen240.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen240.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2400.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2420.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2440.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2460.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2480.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2500.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2520.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2540.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2560.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2580.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen260.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen260.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2600.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2620.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2640.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2660.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2680.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2700.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2720.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2740.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2760.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2780.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen280.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen280.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2820.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2840.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2860.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2880.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2900.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2920.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2940.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2960.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen2980.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen300.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen300.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen3000.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen320.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen320.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen340.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen340.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen360.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen360.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen380.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen380.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen40.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen40.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen400.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen400.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen420.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen420.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen440.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen440.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen460.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen460.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen480.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen480.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen500.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen520.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen540.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen560.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen580.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen60.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen60.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen600.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen620.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen640.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen660.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen680.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen700.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen720.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen740.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen760.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen780.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen80.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen80.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen800.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen820.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen840.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen860.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen880.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen900.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen920.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen940.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen960.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen980.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="73" column="30" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>getTotalSum</find>
+      <find>last_patch</find>
+      <find>getTotal</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/utils.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="width" value="981" />
-    <option name="height" value="1032" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -23,8 +223,22 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="implementacion1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="implementacion1" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -37,6 +251,34 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="implementacion1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -52,25 +294,47 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960254" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19898605" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30955586" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="73" column="30" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
