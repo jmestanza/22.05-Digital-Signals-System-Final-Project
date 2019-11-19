@@ -1,17 +1,19 @@
 import numpy as np
 import random
 import cv2
+import numba
+from numba import jit
 
 def genSquare(square_size):
-    square = []
+    first = True
     for i in range(square_size):
         for j in range(square_size):
-            square.append(
-                [
-                    i - square_size // 2,
-                    j - square_size // 2
-                ]
-            )
+            aux = np.array([i - square_size // 2, j - square_size // 2])
+            if first:
+                square = np.array([aux])
+                first = False
+            else:
+                square = np.append(square, np.array([aux]), axis=0)
     return square
 
 
@@ -32,8 +34,8 @@ def getGradient(grey_scale):
     return sobel_x, sobel_y
 
 
-def getOrthogonalComponentOf(gradient):
-    gx, gy = gradient
+def getOrthogonalComponentOf(gradient_point):
+    gx, gy = gradient_point
     # en este caso, no importa orientacion asi que elegimos una cualquiera
     return -gy, gx
 
@@ -45,45 +47,54 @@ def drawRect(image, pos, sq_sz, color):
             image[y + i][x + j] = color
     return
 
-def getMaxGrad(square, shapeMask, x, y, gradient):
-    max_grad = 0
-    max_grad_value = 0, 0
-    gx, gy = gradient
+@jit(nopython=True)
+def getMaxGrad(square, shapeMask, x, y, gx, gy, grad_norm, square_size):
+    max_grad_norm = -1e10
+#     hs = square_size // 2 #half-square
+#     arr = shapeMask == 0
+#     sh_mask = arr[(y-hs):(y+hs),(x-hs):(x+hs)] # me quede con los bools que me dicen si esta ne ShapeMask
+#     indexes = sh_mask == 0
+#     sub_mat = grad_norm[(y-hs):(y+hs),(x-hs):(x+hs)][indexes]
+#     gx_aux = gx[(y-hs):(y+hs),(x-hs):(x+hs)][indexes]
+#     gy_aux = gy[(y-hs):(y+hs),(x-hs):(x+hs)][indexes]
+#
+#     ind = np.unravel_index(np.argmax(sub_mat, axis=None), sub_mat.shape)
+#     max_grad = gx_aux[ind] , gy_aux[ind] # me devuelve el maximo gradiente
+    for i in range(len(square[0, :])):
+       dx = square[i][0]
+       dy = square[i][1]
+#        solo sumamos si esta fuera de la zona a retocar
+       if shapeMask[y + dy][x + dx] == 0:
+            p = grad_norm[y+dy][x+dx]
+            if p > max_grad_norm:  # buscamos el mayor gradiente en norma
+                max_grad_norm = p
+                max_grad = gx[y + dy][x + dx], gy[y + dy][x + dx]
+    return max_grad
 
-    for dx, dy in square:
-        # solo sumamos si esta fuera de la zona a retocar
-        if shapeMask[y + dy, x + dx] == 0:
-            vx = gx[y][x]
-            vy = gy[y][x]
 
-            p = vx ** 2 + vy ** 2
-            if p > max_grad:  # buscamos el mayor gradiente en norma
-                max_grad = p
-                max_grad_value = vx, vy
-
-    return max_grad_value
-
+@jit(nopython=True)
 def getTotalSum(imagen,sq_sz,x,y,px,py):
     return np.sum(np.square(imagen[y-sq_sz//2: y+sq_sz//2][x-sq_sz//2: x+sq_sz//2]-
            imagen[py-sq_sz//2: py+sq_sz//2][px-sq_sz//2: px+sq_sz//2]))
 
+@jit(nopython=True)
 def copyPattern(imagen, square_size, best_benefit_point, minDistPatch, c, mask):
     px, py = best_benefit_point
     bx, by = minDistPatch
     # copia patch a zona reemplazar (el patron)
-    imagen[py - square_size // 2: py + square_size // 2, px - square_size // 2: px + square_size // 2] = \
-        imagen[by - square_size // 2: by + square_size // 2, bx - square_size // 2: bx + square_size // 2]
+    half_sq = square_size // 2
+    imagen[py - half_sq: py + half_sq, px - half_sq: px + half_sq] = \
+        imagen[by - half_sq: by + half_sq, bx - half_sq: bx + half_sq]
 
     ## copiamos la confianza del parche elegido a la la confianza del lugar donde copiamos el parche
-    c[py - square_size // 2: py + square_size // 2, px - square_size // 2: px + square_size // 2] = \
-        c[by - square_size // 2: by + square_size // 2, bx - square_size // 2: bx + square_size // 2] * 0.99
+    c[py - half_sq: py + half_sq, px - half_sq: px + half_sq] = \
+        c[by - half_sq: by + half_sq, bx - half_sq: bx + half_sq] * 0.99
 
     ## marcamos la zona reemplazada como blanca
-    mask[py - square_size // 2: py + square_size // 2, px - square_size // 2: px + square_size // 2] = \
-        [255, 255, 255]
+    mask[py - half_sq: py + half_sq, px - half_sq: px + half_sq] = np.array([255, 255, 255])
     return
 
-
+@jit(nopython=True)
 def getBorderNormal(borde):
     n = len(borde)
     border_normal_list = []
@@ -117,46 +128,25 @@ def getMinDistPatch(best_benefit_point,search_times,search_square_size,shapeMask
     return best_patch
 
 
-def getBenefit(border_point_pos, border_normal, gradient, square, shapeMask, confidence):
+#def getOrthogonalComponentOf(gradient_point):
+#    gx, gy = gradient_point
+#    # en este caso, no importa orientacion asi que elegimos una cualquiera
+#    return -gy, gx
+
+@jit(nopython=True)
+def getBenefit(border_point_pos, border_normal, gx,gy , square, shapeMask, confidence,grad_norm, square_size):
     x, y = border_point_pos
     nx, ny = border_normal
-    max_grad_value = getMaxGrad(square, shapeMask, x, y, gradient)
+    max_grad = getMaxGrad(square, shapeMask, x, y, gx, gy,grad_norm, square_size)
     # producto escalar del gradiente con la normal acorde a la formula
-    nablaIpperp = getOrthogonalComponentOf(max_grad_value)
+    perpy, perpx = max_grad
+    perpy = -perpy
+    #nablaIpperp = getOrthogonalComponentOf(max_grad)
 
-    d = nablaIpperp[0] * nx + nablaIpperp[1] * ny
-
+    #d = nablaIpperp[0] * nx + nablaIpperp[1] * ny
+    d = perpx * nx + perpy * ny
     # el beneficio es la confianza por el factor d
 
     benefit = abs(d * confidence)
 
     return benefit
-
-
-def contourAlgorithm(borde_actual, square, shapeMask, c, gradient):
-    best_benefit = 0
-    best_benefit_point = None
-    ## necesitamos generar las normales de cada punto del contorno
-    border_normal_list = getBorderNormal(borde_actual)
-    for index, border_point in enumerate(borde_actual):
-        border_point_pos = border_point[0]
-        x, y = border_point_pos
-        confidence = 0
-        # consigo la confianza del punto del contorno actual
-        for dx, dy in square:
-            if shapeMask[y + dy, x + dx] == 0:  # si fuera de la region a retocar
-                confidence += c[y + dy, x + dx]
-
-        confidence /= len(square)
-
-        # consigo la componente normal del gradiente
-        border_normal = border_normal_list[index]
-        benefit = getBenefit(border_point_pos, border_normal, gradient, square, shapeMask, confidence)
-
-        # buscamos maximizar el beneficio
-        if benefit > best_benefit:
-            best_benefit = benefit
-            best_benefit_point = x, y
-
-    return best_benefit, best_benefit_point
-
