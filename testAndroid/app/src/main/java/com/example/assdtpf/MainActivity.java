@@ -53,12 +53,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRgba = inputFrame.rgba();
-
-
         Core.transpose(mRgba, mRgbaT);
-
-        //mRgbaT.clone().copyTo(mRgbaF);
-        //Core.flip(mRgbaF, mRgbaW, 1 );
 
         return mRgba;
     }

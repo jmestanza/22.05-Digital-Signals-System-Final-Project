@@ -4,6 +4,10 @@ package com.example.assdtpf;
  *
  */
 
+/** Esta Activity (ActivityPhoto) se encarga de interactuar con el usuario para que en la pantalla se pueda ver la foto
+ * pero también al mismo tiempo se pueda seleccionar la región a eliminar.
+ */
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -19,19 +23,26 @@ import android.widget.Button;
 import android.widget.ImageView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
+
+
+
 public class ActivityPhoto extends AppCompatActivity{
-    Button buttonLoadPicture;
+    Button buttonLoadPicture; // boton para cargar imagen
     Button clearButton;
     Button processButton;
 
     Bitmap selectedBitmap;
     ImageProcessor processor;
 
-    ImageView imgView;
     final Integer RESULT_LOAD_IMAGE = 1;
     com.javacodegeeks.androidcanvasexample.CanvasView customCanvas;
     private String status;
     private ProgressWheel wheel;
+
+    private String SelectBorder = "Select border";
+    private String WaitForConfirm = "Wait for confirm";
+    private String Processing = "Processing";
+    private String Finish = "Finish";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +77,6 @@ public class ActivityPhoto extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (status.equals("Select border")) {
-
                     wheel.setVisibility(View.INVISIBLE);
                     customCanvas.setMaskBitmap(null);
                     customCanvas.clearCanvas();
@@ -82,7 +92,7 @@ public class ActivityPhoto extends AppCompatActivity{
                 }else if(status.equals("Processing") ){
                     customCanvas.setMaskBitmap(null);
                     customCanvas.clearCanvas();
-                    status = "Select border";
+                    status = "Select border"; // restart
                     processButton.setText(R.string.Select);
                     processButton.setEnabled(true);
                     customCanvas.setEnabled(true);
@@ -115,10 +125,18 @@ public class ActivityPhoto extends AppCompatActivity{
         processor.setFinishListener(new FinishProcessListener() {
             @Override
             public void finish() {
+                Log.d("ImageEditLogs","El algoritmo ha finalizado");
                 status = "Finish";
-                wheel.setVisibility(View.INVISIBLE);
-                processButton.setText("SAVE");
-                processButton.setEnabled(true);
+
+                runOnUiThread(new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        wheel.setVisibility(View.INVISIBLE);
+                        processButton.setEnabled(true);
+                        processButton.setText(R.string.Save);
+                    }
+                }));
+
             }
         });
 
@@ -178,8 +196,8 @@ public class ActivityPhoto extends AppCompatActivity{
         processor.computeContours();
 
         customCanvas.clearCanvas();
-
         customCanvas.setMaskBitmap(processor.getFloodedBitmap());
+
         status = "Wait for confirm";
         customCanvas.setEnabled(false);
 

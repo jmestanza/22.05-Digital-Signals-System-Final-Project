@@ -3,4 +3,5 @@
     <string name="Process">PROCESS</string>
     <string name="Select">SELECT</string>
     <string name="Loading">LOADING</string>
+    <string name="Save">SAVE</string>
 </resources>

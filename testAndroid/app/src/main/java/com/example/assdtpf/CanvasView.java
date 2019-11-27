@@ -1,3 +1,5 @@
+/*** Canvas View administra el dibujo sobre la imagen para seleccionar la region a eliminar ***/
+
 package com.javacodegeeks.androidcanvasexample;
 
 import android.content.Context;
@@ -120,7 +122,7 @@ public class CanvasView extends View {
     //override the onTouchEvent
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //if (enabled) {
+        if (enabled) {
             float x = event.getX();
             float y = event.getY();
 
@@ -138,7 +140,7 @@ public class CanvasView extends View {
                     invalidate();
                     break;
             }
-        //}
+        }
         return true;
     }
 
@@ -147,17 +149,7 @@ public class CanvasView extends View {
     }
 
     public void setmBitmap(Bitmap bitmap) {
-
-        //Bitmap mutableBitmap = mBitmap.copy(Bitmap.Config.ARGB_8888, true);
-
-        //Paint paint = new Paint();
-        //paint.setAntiAlias(true);
-       // paint.setFilterBitmap(true);
-        //paint.setDither(true);
-        //this.mCanvas.drawColor(0xFFAAAAAA);
-
         this.backgroundBitmap = bitmap;
-
     }
     public Path getPath(){
         return mPath;

@@ -1,8 +1,9 @@
 package com.example.assdtpf;
 
+import android.app.Activity;
 import android.util.Log;
 
-public class ThreadProcess extends Thread{
+public class ThreadProcess extends Thread{ // esta clase simplifica el uso de threads
     ThreadListener listener;
     Long iterations;
     boolean end;
@@ -18,9 +19,13 @@ public class ThreadProcess extends Thread{
             cont = this.listener.runThread();
             iterations ++; // mientras retorna true seguimos
         }
+        finish();
     }
     public void finish(){
         end = true;
+        if (this.listener != null){
+            this.listener.threadFinish();
+        }
     }
     public ThreadListener getListener() {
         return listener;
@@ -29,4 +34,5 @@ public class ThreadProcess extends Thread{
     public void setListener(ThreadListener listener) {
         this.listener = listener;
     }
+
 }

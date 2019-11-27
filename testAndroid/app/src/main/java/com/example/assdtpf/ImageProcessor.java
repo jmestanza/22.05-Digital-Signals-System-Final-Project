@@ -1,3 +1,10 @@
+/*** Image processor: by Ariel Nowik
+ * Este código se encarga de realizar todo el procesamiento de imagenes del programa utilizando la
+ * libería openCV
+ *
+ */
+
+
 /*** Flood fill
  * https://github.com/JavaOpenCVBook/code/blob/master/chapter3/floodfill/src/main/java/org/javaopencvbook/utils/FloodFillFacade.java
  **/
@@ -9,6 +16,8 @@
 /** https://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html#floodfill
  *
  */
+
+
 package com.example.assdtpf;
 
 import android.content.Context;
@@ -33,16 +42,15 @@ import static java.lang.Math.pow;
 import static org.opencv.core.CvType.*;
 
 public class ImageProcessor {
-    private Bitmap bitmap;
-    private Mat flooded;
+    private Bitmap bitmap; // Bitmap con informacion de la imagen
+    private Mat flooded; // Mat para ser inundado por el algoritmo
     private Mat img;
 
     private Bitmap pathBitmap;
-    private Context ctx;
 
-    private Integer search_square_size;
-    private Integer search_times;
-    private Integer square_size;
+    private Integer search_square_size; // tamaño del cuadrado de la región de busqueda cercana
+    private Integer search_times; // cantidad de tanteos para buscar el cuadrado
+    private Integer square_size; // tamaño del cuadrado de busqueda
 
     private Scalar lower, upper;
     private Mat confidence, shapeMask, grey_scale; // matriz de confianza
@@ -56,13 +64,12 @@ public class ImageProcessor {
     private Mat black;
     private FinishProcessListener finishListener;
 
-    public ImageProcessor(Context ctx){
+    protected ImageProcessor(Context ctx){
         OpenCVLoader.initDebug();
 
         img = null;
         flooded = null;
-        this.ctx = ctx;
-        thread = new ThreadProcess();
+        thread = new ThreadProcess(); // el algoritmo pesado se ejecuta en un thread
         iterations = 0l;
         finishListener = null;
 
@@ -80,8 +87,11 @@ public class ImageProcessor {
 
         r = new Random();
 
+        // el tamaño del cuadrado de busqueda se configura en un archivo
         search_square_size = ctx.getResources().getInteger(R.integer.search_square_size);
+        // el numero de tanteos de cuadrados se configura en un archivo
         search_times = ctx.getResources().getInteger(R.integer.search_times);
+        // el tamaño del cuadrado de busqueda se configura en un archivo
         square_size = ctx.getResources().getInteger(R.integer.square_size);
 
         lower = new Scalar(100);
@@ -95,6 +105,9 @@ public class ImageProcessor {
 
     }
     public void setBitmap(Bitmap bitmap){
+        // esta funcion configura que bitmap se utilizará para el procesamiento
+        // también realiza cálculos iniciales muy necesarios
+
         if (img == null){
             img = new Mat();
         }
@@ -107,7 +120,7 @@ public class ImageProcessor {
         Size sz = new Size(this.width,this.height);
         Imgproc.resize(aux, img ,sz);
 
-        /** Matrices necesarias para el algoritmo **/
+        // Matrices necesarias para el algoritmo
         confidence = new Mat(
                 img.size(),
                 CvType.CV_32SC1
@@ -138,11 +151,6 @@ public class ImageProcessor {
         this.pathBitmap = bitmap;
     }
     public void computeContours(){
-        //List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
-
-        /*Imgproc.findContours(
-                img, contours, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE
-        );*/
 
         Mat mask = new Mat();
         Mat inputMatSmall = new Mat();
@@ -190,7 +198,7 @@ public class ImageProcessor {
             runIteration();
         }*/
     }
-    public boolean runIteration() {
+    private boolean runIteration() {
         /// correr una iteración del algoritmo
 
 
@@ -246,7 +254,7 @@ public class ImageProcessor {
                     int dx = dd.second;
                     double []v = shapeMask.get(y + dy, x + dx);
 
-                    if (v[0] < 0.1f){
+                    if (v[0] < 0.1f){ // problemas reportados con esta linea.
                         // fuera de la zona a retocar
                         sum_confidence += confidence.get(y + dy, x + dx)[0];
                     }
@@ -299,6 +307,7 @@ public class ImageProcessor {
 
         if (best_benefit_point == null){
             Log.d("ImageEditLogs","Termino el algoritmo");
+            this.finishListener.finish();
             return false; // significa que terminamos
 
         }
