@@ -4,6 +4,7 @@ from PIL import Image
 import time
 from utils import *
 
+
 img = cv2.imread('output3/imagen.jpeg', 3)# matriz, cada el es un RGB
 # mascara con area a remover. Zona negra (0,0,0) se remueve, Blanca se deja(255,255,255)
 mask = cv2.imread("output3/mask.jpeg")
@@ -18,7 +19,6 @@ search_square_size = 500
 
 # cuantas veces buscamos al azar por un parche
 search_times = 100
-
 
 def procesar(imagen, mask, iteraciones):
     # re-mapeamos a 0 y 255 la mascara. 255: zona a retocar, 0 a no retocar.
@@ -42,6 +42,8 @@ def procesar(imagen, mask, iteraciones):
         grey_scale = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
 
         gradient = getGradient(grey_scale)
+        gx, gy = gradient
+        grad_norm = np.square(gx) + np.square(gy)
 
         # for contorno in range(len(cnts)):
         #     borde = cnts[contorno] #borde tiene los puntos que forman las curvas cerradas
@@ -65,7 +67,7 @@ def procesar(imagen, mask, iteraciones):
                 confidence /= len(square)
 
                 border_norm = border_normal[index]
-                benefit = getBenefit(border_point[0],border_norm,gradient,square,shapeMask,confidence)
+                benefit = getBenefit(border_point[0],border_norm,gx,gy ,square,shapeMask,confidence,grad_norm, square_size)
                 # buscamos maximizar el beneficio
                 if benefit > best_benefit:
                     best_benefit = benefit
@@ -86,7 +88,7 @@ def procesar(imagen, mask, iteraciones):
 
 
 start_time = time.time()
-iteraciones = 10000
+iteraciones = 500
 procesar(img, mask,iteraciones)
 end_time = time.time()
 print("se calculo en:", (end_time-start_time)/60, " minutos")

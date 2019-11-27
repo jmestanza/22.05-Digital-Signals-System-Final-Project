@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="528253a3-f8c4-4725-b320-f4b9c4b498d7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/implementacion1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/implementacion1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen0.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen0.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen100.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen100.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen120.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen120.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen140.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen140.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen160.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen160.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen180.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen180.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen20.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen20.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen200.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen200.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen220.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen220.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen240.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen240.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen260.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen260.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen280.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen280.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen300.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen300.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen320.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen320.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen340.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen340.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen360.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen360.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen380.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen380.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen40.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen40.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen400.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen400.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen420.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen420.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen440.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen440.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen460.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen460.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen480.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen480.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen60.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen60.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen80.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen80.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1ToFwI1O4TGq4ZukNwQks3JTTb9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="implementacion1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="implementacion1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_gen_sq" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="implementacion1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_gen_sq.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.test_gen_sq" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="528253a3-f8c4-4725-b320-f4b9c4b498d7" name="Default Changelist" comment="" />
+      <created>1565542969215</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565542969215</updated>
+      <workItem from="1574118788688" duration="16302000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/implementacion1$main.coverage" NAME="main Coverage Results" MODIFIED="1574136287376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
