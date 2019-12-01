@@ -4,7 +4,7 @@ from MenuFrames.MainFrame import MainFrame
 from MenuFrames.AboutFrame import AboutFrame
 from MenuFrames.HelpFrame import HelpFrame
 from MenuFrames.EditorFrame import EditorFrame
-
+from MenuFrames.ProcessFrame import ProcessFrame
 
 class MainWindow:
     def __init__(self):
@@ -51,6 +51,9 @@ class MainWindow:
             self.actualFrame.delete_frame()
             self.load_title_bkg()
             self.actualFrame = MainFrame(self)
+        elif new_req == "editor_process_req":
+            self.actualFrame.delete_frame()
+            self.actualFrame = ProcessFrame(self)
 
     def exit(self):
         self.actualFrame.delete_frame()

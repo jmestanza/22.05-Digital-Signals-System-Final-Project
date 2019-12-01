@@ -54,6 +54,7 @@ class EditorFrame:
         self.processButton.config(font=('Algerian', 20))
         self.processButton.grid(pady=20, ipadx=10, ipady=5, row=4, column=2, sticky='W')
 
+
     def choose_img(self):
         #Es un string con el directorio de la imagen
         self.img_load_path = tk.filedialog.askopenfilename(initialdir="/", title="Select file",
@@ -73,6 +74,7 @@ class EditorFrame:
 
     def process_req(self):
         self.imgFrame.create_mask()
+        self.window_ref.view_update("editor_process_req")
 
     def delete_frame(self):
         self.editorFrame.destroy()

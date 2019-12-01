@@ -34,7 +34,7 @@ class ImageFrame:
             self.pointList.append(event.y)
 
     def plot_poly(self, event):
-        if len(self.pointList) >= 4:
+        if len(self.pointList) >= 6:
             self.imgFrame.create_polygon(self.pointList, fill="black")
             self.fix_coord()
             self.draw.polygon(self.pointList, fill='black')
@@ -46,7 +46,7 @@ class ImageFrame:
         self.pointShowList.clear()
 
     def create_mask(self):
-        self.image1.save('testmask.png')
+        self.image1.save('OutJobs/testmask.png')
         #  Hay que seguir desde aca
 
     def fix_coord(self):
