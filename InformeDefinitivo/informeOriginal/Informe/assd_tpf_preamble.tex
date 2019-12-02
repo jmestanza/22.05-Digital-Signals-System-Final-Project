@@ -1,6 +1,10 @@
 \usepackage[utf8]{inputenc}
 % caracteres utf8 (tildes, enie) sin tener que usar comandos
 
+\usepackage[spanish, es-tabla, es-nodecimaldot]{babel} 
+% texto automatico en espaniol
+% "tabla" en vez de "cuadro"
+% no reemplaza puntos decimales por comas
 
 %% NO AGREGAR PAQUETES ANTES DE ESTO, ES IMPORTANTE QUE BABEL ESTE PRIMERO
 
@@ -36,13 +40,4 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% NO AGREGAR PAQUETES DESPUES DE ESTO, ES IMPORTANTE QUE HYPERREF ESTE ULTIMO
 \usepackage[hidelinks]{hyperref} % hipervinculos sin cajitas rojas
-
-\usepackage[spanish, es-tabla, es-nodecimaldot]{babel} 
-% texto automatico en espaniol
-% "tabla" en vez de "cuadro"
-% no reemplaza puntos decimales por comas
-
-\usepackage{listings}
-\usepackage{float}
-\lstset{basicstyle=\small\ttfamily,columns=fullflexible}
 
