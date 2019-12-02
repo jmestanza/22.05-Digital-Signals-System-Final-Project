@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{subfiles}
 \lstset{basicstyle=\small\ttfamily,columns=fullflexible}
 
 % preambulo:
@@ -34,10 +35,9 @@ En este trabajo se estudiaron
 
 \section{Introducción}
 El problema elemental a resolver consiste en la eliminación de un objeto no deseado en una imagen.
-Naturalmente no es posible "adivinar" lo que se encuentre por detrás, ya que requiere información adicional, la cual en principio no es accesible, solo se dispone de la imagen. Por lo tanto la idea es, de algun modo asimilar la zona de la imagen a reemplazar con el resto de la misma. En lo que continua de este trabajo describiremos con un mayor detalle diversos métodos para llevar a cabo este proceso.
+Naturalmente no es posible ``adivinar'' lo que se encuentre por detrás, ya que requiere información adicional, la cual en principio no es accesible, solo se dispone de la imagen. Por lo tanto la idea es, de algun modo asimilar la zona de la imagen a reemplazar con el resto de la misma. En lo que continua de este trabajo describiremos con un mayor detalle diversos métodos para llevar a cabo este proceso.
 
-\section{Lineas de investigación}
-Escribir que distintos papers fueron estudiados
+\subfile{assd_tpf_lineasinvest.tex}
 
 \section{Lineas de investigación escogida}
 Se optó por la linea de investigación de Criminisi ya que se concluyó que su algoritmo tiene un potencial mayor para funcionar en un numero de escenarios mayor que otros métodos por ejemplo basados en frecuencia. Existieron dos papers los cuales fueron los más influyentes en este tipo de procesamientos, los cuales fueron 
@@ -82,5 +82,8 @@ vol. 13, no. 9, pp. 1200–1212, Sep. 2004.
 Technical Review and new Heuristics for better Geometric Reconstructions. IEEE Transactions on
 Image Processing, Institute of Electrical and Electronics Engineers, 2015, 24 (6), pp.1809 - 1824.
 ff10.1109/TIP.2015.2411437ff. ffhal-01147620f
+
+\bibitem{b3} Guillemot, Christine & Le Meur, Olivier. (2014). Image Inpainting : Overview and Recent Advances. Signal Processing Magazine, IEEE. 31. 127-144. 10.1109/MSP.2013.2273004. 
+
 \end{thebibliography}
 \end{document}
