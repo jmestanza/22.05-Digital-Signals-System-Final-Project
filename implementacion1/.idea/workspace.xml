@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="528253a3-f8c4-4725-b320-f4b9c4b498d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/implementacion1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/implementacion1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen0.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen0.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen100.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen100.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen120.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen120.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen140.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen140.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen160.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen160.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen180.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen180.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen20.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen20.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen200.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen200.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen220.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen220.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen240.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen240.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen260.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen260.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen280.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen280.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen300.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen300.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen320.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen320.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen340.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen340.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen360.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen360.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen380.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen380.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen40.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen40.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen400.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen400.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen420.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen420.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen440.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen440.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen460.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen460.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen480.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen480.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen60.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen60.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen80.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen80.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +121,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565542969215</updated>
-      <workItem from="1574118788688" duration="16302000" />
+      <workItem from="1574118788688" duration="16758000" />
     </task>
     <servers />
   </component>
