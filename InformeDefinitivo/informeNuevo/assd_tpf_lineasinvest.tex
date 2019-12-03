@@ -29,13 +29,13 @@ Entonces el objetivo es lograr una aproximación de $I$ (llamese $I'$) que logre
 Otra consecuencia de este mal condicionamiento del problema es c\'omo definir el \'exito a partir de $I'$ y de $F$. Dado que se desconoce la imagen original $I$, que ser\'ia el resultado ideal, no existe una m\'etrica cuantitativa que determine la calidad de una reconstrucci\'on dada, y por lo tanto se debe recurrir a evaluaciones subjetivas. En general, lo que se espera como resultado es una imagen que parezca f\'isicamente plausible, y que parezca natural al ojo humano.
 
 \subsection{Primeras ideas}
-Existen una gran cantidad de técnicas para afrontar el problema.
+Existen una gran variedad de técnicas para afrontar el problema. Dentro de todas ellas se distinguen dos subgrupos principales, que son los metodos basados en difusión, y los métodos basados en ejemplares. Como no existe ninguna ventaja determinante de una variante y la otra en este trabajo práctico se procedió a investigar ambas familias de métodos. Acorde al tipo de imagen puede ser más conveniente un metodo u otro, incluso en algunos casos se puede usar una mezcla de ambos.
 
+\subsubsection{Metodos basados en difusión}
+La primera categoria de métodos se denomina difusión, y la idea fundamental proviene de propagar información con restricciones usando ecuaciónes diferenciales parciales. La idea consiste en mediante una ecuación propagar sobre la región $U$ con pixeles cambiados (del exterior al interior) información que permita reconstruirla de una manera acorde.
+En este método juega un papel fundamental que ecuación utilizar para realizar la propagación, en particular sobre que direcciones propagar más, y sobre cuales menos. En general este méotodo suele dar resultados de mayor efectividad cuando la imagen tiende a tener patrones homogeneos sin cambios de textura muy abruptos.  Más adelante se describirá una variante del método con mayor detalle.
 
-\subsection{Métodos basados en difusión}
-
-
-\subsection{Métodos basados en ejemplares}
+\subsubsection{Métodos basados en ejemplares}
 Una segunda categor\'ia de m\'etodos para resolver el problema de inpainting se basa en 
 asumir que la imagen $I$ posee ciertas probabilidades de estacionareidad y auto similaridad 
 entre sus distintas regiones. Asumiendo que esto es cierto, se procede a rellenar la parte
@@ -48,26 +48,8 @@ Estos m\'etodos, entonces, tienen a grandes rasgos dos criterios a desarrollar:
 	\item c\'omo elegir el parche con el cual se rellenar\'a dicha regi\'on
 \end{itemize}
 
-Un enfoque por fuerza bruta de estos problemas puede resultar excesivamente costoso en tiempo, ya que implicar\'ia potencialmente comparar una regi\'on de la imagen con todas las dem\'as. Por lo tanto, existen diversos criterios que pueden tomarse en este sentido.
 
-Uno de ellos es desarrollado por Barnes, Shechtman, Finkelstein y Goldman, quienes desarrollaron un algoritmo con el nombre de PatchMatch \cite{patchmatch}.  El mismo
-hace uso de la asunci\'on de ciertas propiedades de coherencia en la imagen para reducir
-el n\'umero de comparaciones que debe hacerse, sin perder la efectividad del algoritmo.
- 
-Una vez elegido un lugar donde se quiere rellenar, PatchMatch comienza comparando con algunas regiones aleatorias de la imagen original, y a partir del resultado m\'as satisfactorio que obtiene hace dos suposiciones:
-\begin{itemize}
-	\item si se tiene un buen match para una regi\'on que se quiere rellenar, es probable 
-	que, si existe un parche que es un match a\'un mejor, se encuentre cerca del bueno (es
-	decir, se asume que estamos en la zona correcta de la imagen, y s\'olo debemos
-	terminar de acercarnos al match \'optimo)
-	\item si un parche es un buen match para una cierta regi\'on a rellenar, es probable que
-	tambi\'en sea un buen match para regiones cercanas
-\end{itemize}
 
-De esta manera, seg\'un los autores del algoritmo, se logra obtener muy buenos resultados con menos comparaciones. La limitaci\'on que tiene este algoritmo es que no puede dejarse
-de introducir comparaciones random incluso habiendo encontrado un ``buen'' match,
-puesto que se corre el riesgo de quedarse en un m\'inimo local, que no sea el m\'inimo
-global.
 
-\subsection{M\'etodos h\'ibridos}
+\subsubsection{M\'etodos h\'ibridos}
 \end{document}
