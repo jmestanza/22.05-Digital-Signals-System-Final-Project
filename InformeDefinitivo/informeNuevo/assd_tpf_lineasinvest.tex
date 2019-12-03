@@ -35,7 +35,17 @@ Existen una gran variedad de técnicas para afrontar el problema. Dentro de toda
 La primera categoria de métodos se denomina difusión, y la idea fundamental proviene de propagar información con restricciones usando ecuaciónes diferenciales parciales. La idea consiste en mediante una ecuación propagar sobre la región $U$ con pixeles cambiados (del exterior al interior) información que permita reconstruirla de una manera acorde.
 En este método juega un papel fundamental que ecuación utilizar para realizar la propagación, en particular sobre que direcciones propagar más, y sobre cuales menos. En general este méotodo suele dar resultados de mayor efectividad cuando la imagen tiende a tener patrones homogeneos sin cambios de textura muy abruptos.  Más adelante se describirá una variante del método con mayor detalle.
 
+<<<<<<< HEAD
 \subsubsection{Métodos basados en ejemplares}
+=======
+\subsection{Métodos basados en difusión}
+
+
+\subfile{difusion.tex}
+
+
+\subsection{Métodos basados en ejemplares}
+>>>>>>> 34eec13a68a14ef0249937b77ed68eee98886bf9
 Una segunda categor\'ia de m\'etodos para resolver el problema de inpainting se basa en 
 asumir que la imagen $I$ posee ciertas probabilidades de estacionareidad y auto similaridad 
 entre sus distintas regiones. Asumiendo que esto es cierto, se procede a rellenar la parte
