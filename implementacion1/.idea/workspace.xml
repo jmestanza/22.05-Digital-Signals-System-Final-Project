@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="528253a3-f8c4-4725-b320-f4b9c4b498d7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../InformeDefinitivo/informeDifusionPDEs/assd_tpf_main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../InformeDefinitivo/informeDifusionPDEs/assd_tpf_main.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,6 +90,9 @@
       <module name="implementacion1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -122,6 +126,7 @@
       <option name="presentableId" value="Default" />
       <updated>1565542969215</updated>
       <workItem from="1574118788688" duration="16758000" />
+      <workItem from="1575344178428" duration="13000" />
     </task>
     <servers />
   </component>
@@ -133,7 +138,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
