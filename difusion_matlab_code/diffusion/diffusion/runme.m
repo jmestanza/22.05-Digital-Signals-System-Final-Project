@@ -3,7 +3,7 @@
 
 %Read the images
 disp('Reading images...')
-I_l0 = imread('./images/DRIVSCO_left_0450.png');
+I_l0 = imread('./images/kitten_raya.jpeg');
 
 %Apply diffusion
 I_l0_diff = Diffusion4_v10( I_l0 );

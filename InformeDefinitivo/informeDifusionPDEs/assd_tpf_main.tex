@@ -63,8 +63,50 @@ En la figura \ref{fig:ComparacionDifIso} se puede ver que la imagen se encuentra
 
 \section{Difusión anisotrópica } 
 Hummel en 1986 establece que para obtener un buen resultado en el realce de la imagen, el flujo del filtro con el que se implemente satisfaga el principio del máximo. 
-Desde ese entonces, aparecieron propuestas tales como PDE no lineales en las que no difunda el flujo uniformemente a pesar de no cumplir con el principio del máximo. Estos filtros son llamados de difusión anisotrópica.
+Desde ese entonces, aparecieron propuestas tales como PDE no lineales en las que no difunda el flujo uniformemente a pesar de no cumplir con el principio del máximo. Estos filtros son llamados de difusión anisotrópica. 
+Pietro Perona y Jitendra Malik fueron quienes en 1990 presentaron un suavizado miltiescala preservando bordes basados en 3 criterios:
 
+\begin{itemize}
+  \item Causalidad: Disminuir la resolución de la imagen no puede dar nuevos detalles.
+  \item Localización inmediata: los límites de las regiones deben ser distinguibles y coincidir con los de la imagen original
+  \item Suavizado según zona: suavizado debe ser mayor dentro de una región que en sus fronteras
+\end{itemize}
+
+Este modelo se basa en la segunda ley de Fick, con un coeficiente de conductividad variable c(x,y,t) que controla la difusión en $\Omega$
+
+  \[
+    \left\{
+                \begin{array}{ll}
+                  I_t = div(c(x,y,t)\cdot \nabla I) \\
+                  I(x,y,0) = I_0(x,y)\\
+                \end{array}
+              \right.
+  \]
+Donde 
+
+$div(c(x,y,t) \nabla I) = \nabla \cdot (c(x,y,t) \nabla I) =c\Delta I + \nabla c \cdot \nabla I$
+\\
+
+
+Lo deseable según Perona y Malik es que el coeficiente de difusión c dependa de la norma del gradiente en cada punto. De esta forma, los gradientes con normas pequeñas (zonas homogéneas) tengan coeficiente alto ( filtrado fuerte, por ende suavizado). Mientras que para una norma grande, el coeficiente sea pequeño con tal de que no se deterioren los bordes, es decir que el proceso de difusión sea lento.
+
+Asumiendo $s= |\nabla I|$ , dos propuestas que surgieron para c fueron:
+
+Función de Lorentz:
+
+\[
+  c(s^2) = \frac{1}{1+ \frac{s^2}{K^2}}
+\]
+
+Función de Leclerc:
+
+\[
+  c(s^2) = e^{-\frac{s^2}{2K^2}}
+\]
+
+Donde K es una constante que se elige experimentalmente para controlar al sensibilidad ante los bordes.
+
+ El filtro que se aplica es isotrópico localmente pero la diferencia es que al adaptarse de distinta forma a regiones homogéneas y no homogéneas, adopta el nombre de anisotrópico (aunque técnicamente es difusión no lineal). 
 
 
 
