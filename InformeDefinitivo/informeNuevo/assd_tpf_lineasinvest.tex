@@ -4,6 +4,35 @@
 
 \section{L\'ineas de investigaci\'on}
 
+En primera instancia, se realiz\'o una investigaci\'on acerca 
+del estado del arte de este problema que se busca resolver.
+Este tema es extensivamente explicado en \textit{Image inpainting: Overview and recent advances} por Christine Guillemot y Olivier Le Meur \cite{b3}.
+
 \subsection{Definici\'on del problema de inpainting}
 
+En primer lugar se procede a definir matemáticamente el problema que en este trabajo se aspira a resolver. 
+
+Una imagen $I$ puede definirse de la siguiente manera
+\begin{equation}
+I(\vec x): R^{n} \to R^{m}
+\end{equation}
+Donde $I$ es una función que mapea un pixel $\vec x=(x,y)$ a un color $R^{m}$. Como la imagen es bidimensional, $n=2$, y utilizando un esquema RGB se tiene $m=3$.
+
+En el problema de inpainting se entiende que la imagen $I$ fue degrada por un operador $M$, lo cual genera una imagen nueva $F$ que tiene la imagen con algunos pixeles cambiados (que pertenecen a una región $U$ conocida). Se suele escribir entonces:
+\begin{equation}
+F=M(I)
+\end{equation}
+
+Lo que se busca en principio es reconstruir la imagen original $I$ a partir de $F$ conociendo $M$ (qu\'e p\'ixeles fueron removidos y se quieren reconstruir). Este problema en el sentido estricto no tiene solución, se suele decir entonces que no es un problema bien definido con una unica solución.
+Entonces el objetivo es lograr una aproximación de $I$ (llamese $I'$) que logre ser lo más parecida posible a $I$.
+
+Otra consecuencia de este mal condicionamiento del problema es c\'omo definir el \'exito a partir de $I'$ y de $F$. Dado que se desconoce la imagen original $I$, que ser\'ia el resultado ideal, no existe una m\'etrica cuantitativa que determine la calidad de una reconstrucci\'on dada, y por lo tanto se debe recurrir a evaluaciones subjetivas. En general, lo que se espera como resultado es una imagen que parezca f\'isicamente plausible, y que parezca natural al ojo humano.
+
+\subsection{Métodos basados en difusión}
+
+
+\subsection{Métodos basados en parches}
+
+
+\subsection{M\'etodos h\'ibridos}
 \end{document}
