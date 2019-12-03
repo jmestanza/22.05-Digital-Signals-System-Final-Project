@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbce86ac-07a8-4f93-8b40-b355df0e48eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/difusion1.py" beforeDir="false" afterPath="$PROJECT_DIR$/difusion1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagen.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output3/imagen0.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen0.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output3/imagen10.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen10.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output3/imagen15.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen15.jpeg" afterDir="false" />
@@ -15,7 +13,6 @@
       <change beforePath="$PROJECT_DIR$/output3/imagen40.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen40.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output3/imagen45.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen45.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output3/imagen5.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen5.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/mask.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/mask.jpeg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/difusion1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+            <state relative-caret-position="135">
+              <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -78,7 +75,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1616" />
@@ -205,7 +202,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="1912" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -250,8 +247,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/difusion1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+        <state relative-caret-position="135">
+          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

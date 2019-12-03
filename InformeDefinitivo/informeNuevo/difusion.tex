@@ -77,4 +77,15 @@ Donde K es una constante que se elige experimentalmente para controlar al sensib
 
  El filtro que se aplica es isotrópico localmente pero la diferencia es que al adaptarse de distinta forma a regiones homogéneas y no homogéneas, adopta el nombre de anisotrópico (aunque técnicamente es difusión no lineal). 
 
+Con todo esto en mente, se procedió a realizar una serie de pruebas con un algoritmo que cumpla con estas especificaciones.
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=.98]{diforig.jpeg}
+\includegraphics[scale=1]{dif40it.jpeg}
+\par\end{centering}
+\caption{En la izquierda se encuentra la foto original y en la derecha se puede ver el resultado de haber aplicado difusión anisotrópica tras 40 iteraciones}
+\label{fig:compAnisotrop}
+\end{figure}
+Se observa en la figura \ref{fig:compAnisotrop} que a medida que avanza el algoritmo ciertos bordes prevalecen. Sin embargo, uno de los objetivos finales del proyecto es poder aplicar difusión en una región desconocida por lo que se optó por seguir investigando otras alternativas que se ajusten a nuestros intereses.
+
 \end{document}

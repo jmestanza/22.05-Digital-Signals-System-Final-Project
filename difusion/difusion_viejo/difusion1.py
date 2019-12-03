@@ -44,7 +44,7 @@ def procesar(imagen, mask):
 
     for iteracion in range(iteraciones):
         # conseguimos la escala de grises de la imagen (intensidad)
-        k = 10# esto es heuristico
+        k = 5# esto es heuristico
         # imagen[i][j] = [0, 0, 255] # esta en BGR
         #lowerbound = {'x':4*(rows//10),'y':5*(cols//10)}
         #upperbound = {'x':6*(rows//10),'y':7*(cols//10)}
