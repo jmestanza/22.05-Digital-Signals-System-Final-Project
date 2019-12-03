@@ -90,6 +90,25 @@ $div(c(x,y,t) \nabla I) = \nabla \cdot (c(x,y,t) \nabla I) =c\Delta I + \nabla c
 
 Lo deseable según Perona y Malik es que el coeficiente de difusión c dependa de la norma del gradiente en cada punto. De esta forma, los gradientes con normas pequeñas (zonas homogéneas) tengan coeficiente alto ( filtrado fuerte, por ende suavizado). Mientras que para una norma grande, el coeficiente sea pequeño con tal de que no se deterioren los bordes, es decir que el proceso de difusión sea lento.
 
+Asumiendo $s= |\nabla I|$ , dos propuestas que surgieron para c fueron:
+
+Función de Lorentz:
+
+\[
+  c(s^2) = \frac{1}{1+ \frac{s^2}{K^2}}
+\]
+
+Función de Leclerc:
+
+\[
+  c(s^2) = e^{-\frac{s^2}{2K^2}}
+\]
+
+Donde K es una constante que se elige experimentalmente para controlar al sensibilidad ante los bordes.
+
+ El filtro que se aplica es isotrópico localmente pero la diferencia es que al adaptarse de distinta forma a regiones homogéneas y no homogéneas, adopta el nombre de anisotrópico (aunque técnicamente es difusión no lineal). 
+
+
 
 \begin{thebibliography}{00}
 \bibitem{b1} A. Criminisi, P. Perez, and K. Toyama, “Region filling and object ´
