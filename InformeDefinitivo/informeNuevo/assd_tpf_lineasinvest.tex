@@ -31,8 +31,39 @@ Otra consecuencia de este mal condicionamiento del problema es c\'omo definir el
 \subsection{Métodos basados en difusión}
 
 
-\subsection{Métodos basados en parches}
+\subsection{Métodos basados en ejemplares}
+Una segunda categor\'ia de m\'etodos para resolver el problema de inpainting se basa en 
+asumir que la imagen $I$ posee ciertas probabilidades de estacionareidad y auto similaridad 
+entre sus distintas regiones. Asumiendo que esto es cierto, se procede a rellenar la parte
+de la imagen que falta a partir del uso de ejemplares, o parches, de la region que se tiene.
 
+Estos m\'etodos, entonces, tienen a grandes rasgos dos criterios a desarrollar:
+\begin{itemize}
+	\item c\'omo elegir por qu\'e secci\'on del contorno se comienza a rellenar, o qu\'e
+	regi\'on debe rellenarse a continuaci\'on
+	\item c\'omo elegir el parche con el cual se rellenar\'a dicha regi\'on
+\end{itemize}
+
+Un enfoque por fuerza bruta de estos problemas puede resultar excesivamente costoso en tiempo, ya que implicar\'ia potencialmente comparar una regi\'on de la imagen con todas las dem\'as. Por lo tanto, existen diversos criterios que pueden tomarse en este sentido.
+
+Uno de ellos es desarrollado por Barnes, Shechtman, Finkelstein y Goldman, quienes desarrollaron un algoritmo con el nombre de PatchMatch \cite{patchmatch}.  El mismo
+hace uso de la asunci\'on de ciertas propiedades de coherencia en la imagen para reducir
+el n\'umero de comparaciones que debe hacerse, sin perder la efectividad del algoritmo.
+ 
+Una vez elegido un lugar donde se quiere rellenar, PatchMatch comienza comparando con algunas regiones aleatorias de la imagen original, y a partir del resultado m\'as satisfactorio que obtiene hace dos suposiciones:
+\begin{itemize}
+	\item si se tiene un buen match para una regi\'on que se quiere rellenar, es probable 
+	que, si existe un parche que es un match a\'un mejor, se encuentre cerca del bueno (es
+	decir, se asume que estamos en la zona correcta de la imagen, y s\'olo debemos
+	terminar de acercarnos al match \'optimo)
+	\item si un parche es un buen match para una cierta regi\'on a rellenar, es probable que
+	tambi\'en sea un buen match para regiones cercanas
+\end{itemize}
+
+De esta manera, seg\'un los autores del algoritmo, se logra obtener muy buenos resultados con menos comparaciones. La limitaci\'on que tiene este algoritmo es que no puede dejarse
+de introducir comparaciones random incluso habiendo encontrado un ``buen'' match,
+puesto que se corre el riesgo de quedarse en un m\'inimo local, que no sea el m\'inimo
+global.
 
 \subsection{M\'etodos h\'ibridos}
 \end{document}
