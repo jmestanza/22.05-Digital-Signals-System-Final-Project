@@ -10,10 +10,25 @@ Este tema es extensivamente explicado en \textit{Image inpainting: Overview and 
 
 \subsection{Definici\'on del problema de inpainting}
 
-\subsection{Inpainting por difusi\'on}
+En primer lugar se procede a definir matemáticamente el problema que en este trabajo se aspira a resolver. 
 
-\subsection{Inpainting basado en ejemplares}
+Una imagen $I$ puede definirse de la siguiente manera
+\begin{equation}
+I(\vec x): R^{m} \to R^{n}
+\end{equation}
+Donde $I$ es una función que mapea un pixel $\vec x=(x,y)$ a un color $R^{n}$
+
+En el problema de inpainting se entiende que la imagen $I$ fue degrada por un operador $M$, lo cual genera una imagen nueva $F$ que tiene la imagen con algunos pixeles cambiados (que pertenecen a una región $U$ conocida). Se suele escribir entonces:
+\begin{equation}
+F=M(I)
+\end{equation}
+Lo que se busca en principio es reconstruir la imagen original $I$ a partir de $F$ conociendo $M$. Este problema en el sentido estricto no tiene solución, se suele decir entonces que no es un problema bien definido con una unica solución.
+Entonces el objetivo es lograr una aproximación de $I$ (llamese $I'$) que logre ser lo más parecida posible a $I$.
+\subsection{Métodos basados en difusión}
+
+
+\subsection{Métodos basados en parches}
+
 
 \subsection{M\'etodos h\'ibridos}
-
 \end{document}
