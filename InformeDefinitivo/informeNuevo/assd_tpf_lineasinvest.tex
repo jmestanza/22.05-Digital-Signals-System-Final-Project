@@ -29,17 +29,17 @@ Entonces el objetivo es lograr una aproximación de $I$ (llamese $I'$) que logre
 Otra consecuencia de este mal condicionamiento del problema es c\'omo definir el \'exito a partir de $I'$ y de $F$. Dado que se desconoce la imagen original $I$, que ser\'ia el resultado ideal, no existe una m\'etrica cuantitativa que determine la calidad de una reconstrucci\'on dada, y por lo tanto se debe recurrir a evaluaciones subjetivas. En general, lo que se espera como resultado es una imagen que parezca f\'isicamente plausible, y que parezca natural al ojo humano.
 
 \subsection{Primeras ideas}
-Existen una gran variedad de técnicas para afrontar el problema. Dentro de todas ellas se distinguen dos subgrupos principales, que son los metodos basados en difusión, y los métodos basados en ejemplares. Como no existe ninguna ventaja determinante de una variante y la otra en este trabajo práctico se procedió a investigar ambas familias de métodos. Acorde al tipo de imagen puede ser más conveniente un metodo u otro, incluso en algunos casos se puede usar una mezcla de ambos.
+Existen una gran variedad de técnicas para afrontar el problema. Dentro de todas ellas se distinguen dos subgrupos principales, que son los m\'etodos basados en difusión, y los métodos basados en ejemplares. Como no existe ninguna ventaja determinante de una variante y la otra en este trabajo práctico se procedió a investigar ambas familias de métodos. Acorde al tipo de imagen puede ser más conveniente un metodo u otro, incluso en algunos casos se puede usar una mezcla de ambos.
 
 \subsubsection{Metodos basados en difusión}
 La primera categoria de métodos se denomina difusión, y la idea fundamental proviene de propagar información con restricciones usando ecuaciónes diferenciales parciales. La idea consiste en mediante una ecuación propagar sobre la región $U$ con pixeles cambiados (del exterior al interior) información que permita reconstruirla de una manera acorde.
-En este método juega un papel fundamental que ecuación utilizar para realizar la propagación, en particular sobre que direcciones propagar más, y sobre cuales menos. En general este méotodo suele dar resultados de mayor efectividad cuando la imagen tiende a tener patrones homogeneos sin cambios de textura muy abruptos.  Más adelante se describirá una variante del método con mayor detalle.
+En este método juega un papel fundamental qu\'e ecuación utilizar para realizar la propagación, en particular sobre qu\'e direcciones propagar más, y sobre cu\'ales menos. En general este m\'etodo suele dar resultados de mayor efectividad cuando la imagen tiende a tener patrones homog\'eneos sin cambios de textura muy abruptos.  Más adelante se describirá una variante del método con mayor detalle.
 
 \subsubsection{Métodos basados en ejemplares}
 
 Una segunda categor\'ia de m\'etodos para resolver el problema de inpainting se basa en 
 asumir que la imagen $I$ posee ciertas probabilidades de estacionareidad y auto similaridad 
-entre sus distintas regiones. Asumiendo que esto es cierto, se procede a rellenar la parte
+entre sus distintas regiones. Partiendo de este supuesto, se procede a rellenar la parte
 de la imagen que falta a partir del uso de ejemplares, o parches, de la region que se tiene.
 
 Estos m\'etodos, entonces, tienen a grandes rasgos dos criterios a desarrollar:
