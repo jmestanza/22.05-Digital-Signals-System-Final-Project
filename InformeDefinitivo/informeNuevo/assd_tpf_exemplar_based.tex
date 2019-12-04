@@ -1,0 +1,26 @@
+\documentclass[assd_tpf_main.tex]{subfiles}
+
+\begin{document}
+
+Un enfoque por fuerza bruta de estos problemas puede resultar excesivamente costoso en tiempo, ya que implicar\'ia potencialmente comparar una regi\'on de la imagen con todas las dem\'as. Por lo tanto, existen diversos criterios que pueden tomarse en este sentido.
+
+Uno de ellos es desarrollado por Barnes, Shechtman, Finkelstein y Goldman, quienes desarrollaron un algoritmo con el nombre de PatchMatch \cite{patchmatch}.  El mismo
+hace uso de la asunci\'on de ciertas propiedades de coherencia en la imagen para reducir
+el n\'umero de comparaciones que debe hacerse, sin perder la efectividad del algoritmo.
+ 
+Una vez elegido un lugar donde se quiere rellenar, PatchMatch comienza comparando con algunas regiones aleatorias de la imagen original, y a partir del resultado m\'as satisfactorio que obtiene hace dos suposiciones:
+\begin{itemize}
+	\item si se tiene un buen match para una regi\'on que se quiere rellenar, es probable 
+	que, si existe un parche que es un match a\'un mejor, se encuentre cerca del bueno (es
+	decir, se asume que estamos en la zona correcta de la imagen, y s\'olo debemos
+	terminar de acercarnos al match \'optimo)
+	\item si un parche es un buen match para una cierta regi\'on a rellenar, es probable que
+	tambi\'en sea un buen match para regiones cercanas
+\end{itemize}
+
+De esta manera, seg\'un los autores del algoritmo, se logra obtener muy buenos resultados con menos comparaciones. La limitaci\'on que tiene este algoritmo es que no puede dejarse
+de introducir comparaciones random incluso habiendo encontrado un ``buen'' match,
+puesto que se corre el riesgo de quedarse en un m\'inimo local, que no sea el m\'inimo
+global.
+
+\end{document}
