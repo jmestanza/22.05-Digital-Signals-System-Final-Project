@@ -1,0 +1,13 @@
+difusion_kernel 
+tiene pruebas con convolucion de imagenes con kernels
+difusion_updated
+tiene la version de Julio que no funcionaba muy bien, pero hacía algo
+difusion_viejo
+version de julio que no hace un carajo
+
+impaint_diff_my_way
+tiene lo que decia el paper que esta dentro de esa carpeta
+solo que modificado un poco a mi parecer
+
+impaint_diff_papers_way
+tiene lo que dice el paper y no estaria funcionando :C

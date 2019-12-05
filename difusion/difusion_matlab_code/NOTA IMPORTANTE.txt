@@ -1,6 +1,0 @@
-Esta implentación salió del paper
-\TPF_ASSD\pdfs\PDE_pdfs\diffusion_and_aos.pdf
-
-NO es la unica implementación, en
-\TPF_ASSD\pdfs\PDE_pdfs\Sobre el modelo de difusion anis.... pdf
-En la seccion 3.1.1 hay otra implementación
