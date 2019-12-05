@@ -22,27 +22,31 @@ search_square_size = 500
 search_times = 100
 
 
-#def Ln(i,j, imagen):
-#    Iyy_n = imagen[i - 1, j] - 2 * imagen[i,j] + imagen[i+1, j]
-#    Ixx_n = imagen[i, j-1] - 2 * imagen[i,j] + imagen[i, j+1]
-#    Ln = Ixx_n + Iyy_n
-#    #imagen[340,323-1] dice que tiene algo con e87
-#    return Ln
-def get_Laplacian(imagen):
-    src = imagen.copy()
-    ddepth = cv2.CV_16S
-    kernel_size = 3
-    src = cv2.GaussianBlur(src, (3, 3), 0)
-    src_gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
-    dst = cv2.Laplacian(src_gray, ddepth, ksize=kernel_size)
-    return cv2.convertScaleAbs(dst)
+def Ln(i,j, imagen):
+   Iyy_n = imagen[i - 1, j] - 2 * imagen[i,j] + imagen[i+1, j]
+   Ixx_n = imagen[i, j-1] - 2 * imagen[i,j] + imagen[i, j+1]
+   Ln = Ixx_n + Iyy_n
+   #imagen[340,323-1] dice que tiene algo con e87
+   return Ln
+
+# def get_Laplacian(imagen):
+#     src = imagen.copy()
+#     ddepth = cv2.CV_16S
+#     kernel_size = 3
+#     src = cv2.GaussianBlur(src, (3, 3), 0)
+#     src_gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
+#     dst = cv2.Laplacian(src_gray, ddepth, ksize=kernel_size)
+#     return cv2.convertScaleAbs(dst)
 
 
-def evolve_pixel(i,j,LUV_img, delta_t, epsilon, aux_copy_mat, Ln, gx, gy):
+def evolve_pixel(i,j,LUV_img, delta_t, epsilon, aux_copy_mat):
     # faltaria pasarlo a las otras coordenadas (no RGB)
 
-    comp1 = Ln[i + 1, j].astype(np.float64) - Ln[i - 1, j].astype(np.float64)
-    comp2 = Ln[i, j + 1].astype(np.float64) - Ln[i, j - 1].astype(np.float64)
+    #comp1 = Ln[i + 1, j].astype(np.float64) - Ln[i - 1, j].astype(np.float64)
+    #comp2 = Ln[i, j + 1].astype(np.float64) - Ln[i, j - 1].astype(np.float64)
+    comp1 = Ln(i + 1, j, LUV_img) - Ln(i - 1, j, LUV_img)
+    comp2 = Ln(i, j + 1, LUV_img) - Ln(i, j - 1,LUV_img)
+
     #---------
     Ix_n_b = LUV_img[i, j] - LUV_img[i, j - 1]  # esta es la backwards
     #---------
@@ -54,7 +58,9 @@ def evolve_pixel(i,j,LUV_img, delta_t, epsilon, aux_copy_mat, Ln, gx, gy):
     g = []
     beta = []
     for k in range(3):  # 3 componentes de color (no nec. RGB)
-        dLnvector = np.array([comp1, comp2])
+#        dLnvector = np.array([comp1, comp2])
+        dLnvector = np.array([comp1[k], comp2[k]])
+
         aux_norm = np.sqrt(np.square(Ix_n_b[k]) + np.square(Iy_n_b[k]) + epsilon)
         Nvectorunit = np.array([-Iy_n_b[k] / aux_norm, Ix_n_b[k] / aux_norm])
         #aux_norm = np.sqrt(np.square(gx[i,j]) + np.square(gy[i,j]) + epsilon)
@@ -83,8 +89,8 @@ def evolve_pixel(i,j,LUV_img, delta_t, epsilon, aux_copy_mat, Ln, gx, gy):
     It_n = np.array(It_n)
     aux_copy_mat[i, j] = LUV_img[i, j] + delta_t * It_n
     #me aseguro de que ro no tenga datos invalidos
-    # if aux_copy_mat[i,j,0] > 400:
-    #     aux_copy_mat[i, j, 0] = 400
+    # if aux_copy_mat[i,j,0] > 442:
+    #     aux_copy_mat[i, j, 0] = 442
     #     print("sature ro")
     # if aux_copy_mat[i,j,0] < 0:
     #     aux_copy_mat[i, j, 0] = 0
@@ -145,12 +151,13 @@ def procesar(imagen, mask, iteraciones):
                 print("No hay mas bordes. Fin")
                 break
         for borde in cnts:
-            Ln = get_Laplacian(imagen)
-            gx, gy = getGradient(cv2.cvtColor(imagen, cv2.COLOR_RGB2GRAY))
+#            Ln = get_Laplacian(imagen)
+#            gx, gy = getGradient(cv2.cvtColor(imagen, cv2.COLOR_RGB2GRAY))
 
             for border_point in borde:
                 j, i = border_point[0]
-                evolve_pixel(i, j, color_model, delta_t, epsilon, aux_copy_mat, Ln, gx, gy)
+                evolve_pixel(i, j, color_model, delta_t, epsilon, aux_copy_mat)
+                #evolve_pixel(i, j, color_model, delta_t, epsilon, aux_copy_mat, Ln, gx, gy)
                 #ro_aux = aux_copy_mat[:,:,0]
                 #aux_copy_mat[i,j] = np.array([0,0,0])
                 mask[i, j] = np.array([255, 255, 255]) #este punto del borde ya fue procesado
@@ -165,7 +172,7 @@ def procesar(imagen, mask, iteraciones):
 
 
 start_time = time.time()
-iteraciones = 1000
+iteraciones = 100
 procesar(img, mask,iteraciones)
 end_time = time.time()
 print("se calculo en:", (end_time-start_time)/60, " minutos")
