@@ -46,8 +46,7 @@ class ImageFrame:
         self.pointShowList.clear()
 
     def create_mask(self):
-        self.image1.save('OutJobs/testmask.png')
-        #  Hay que seguir desde aca
+        self.image1.save('OutJobs/testmask.jpeg')
 
     def fix_coord(self):
         for i in range(0, len(self.pointList), 1):
