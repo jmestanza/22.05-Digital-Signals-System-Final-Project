@@ -6,8 +6,10 @@ from Algoritmo.algorithm import Algorithm
 
 
 class ProcessFrame:
-    def __init__(self, main_win):
+    def __init__(self, main_win, original_img_address):
         self.window_ref = main_win
+
+        self.img_org_address = original_img_address
 
         self.processFrame = tk.Frame()
         self.processFrame.config(bg="white", width=960, height=600)
@@ -18,7 +20,7 @@ class ProcessFrame:
         self.titleLabel.grid(ipadx=10, ipady=10, row=0, columnspan=3)
 
         self.inpaintProgress = ProgressFrame(self.processFrame, 1)
-        self.img_address = "OutJobs/testimage.jpeg"
+        self.img_address = self.img_org_address
         self.inpaintProgress.update_image(self.img_address)
 
         self.processProgress = ttk.Progressbar(self.processFrame, length=300, mode="indeterminate")
@@ -29,7 +31,7 @@ class ProcessFrame:
         self.OKButton.config(font=('Algerian', 20))
         self.OKButton.grid(ipadx=10, ipady=5, row=3, columnspan=3)
 
-        self.algorithm = Algorithm(self.update_statics)
+        self.algorithm = Algorithm(self.update_statics, self.img_org_address)
 
         self.taskTest = threading.Thread(target=self.task1)
         self.taskTest.start()

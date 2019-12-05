@@ -76,5 +76,8 @@ class EditorFrame:
             self.imgFrame.create_mask()
             self.window_ref.view_update("editor_process_req")
 
+    def get_orig_img_address(self):
+        return self.img_load_path
+
     def delete_frame(self):
         self.editorFrame.destroy()
