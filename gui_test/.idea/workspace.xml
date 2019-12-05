@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e7684be6-9e45-422c-b37b-df8562f647d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algoritmo/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Algoritmo/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algoritmo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Algoritmo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algoritmo/algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algoritmo/algorithm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algoritmo/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algoritmo/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuFrames/EditorFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFrames/EditorFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuFrames/ProcessFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFrames/ProcessFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OutJobs/testmask.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/OutJobs/testmask.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_gui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,5 +196,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

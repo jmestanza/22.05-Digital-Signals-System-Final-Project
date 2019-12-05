@@ -4,6 +4,7 @@ import cv2
 import numba
 from numba import jit
 
+
 def genSquare(square_size):
     first = True
     for i in range(square_size):
