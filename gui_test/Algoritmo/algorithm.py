@@ -19,7 +19,7 @@ class Algorithm:
 
         self.search_times = 100
         self.iteraciones = 3000
-        self.square_size = 4
+        self.square_size = 2
         self.search_square_size = 100
 
         self.new_address = ""
