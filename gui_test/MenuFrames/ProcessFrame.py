@@ -53,6 +53,7 @@ class ProcessFrame:
 
         if self.avoid == 0:
             self.taskFinish = 1
+            self.processProgress.stop()
             self.OKButton.config(text="Termino")
 
     def delete_frame(self):
