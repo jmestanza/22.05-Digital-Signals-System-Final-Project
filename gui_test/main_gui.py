@@ -6,6 +6,7 @@ from MenuFrames.HelpFrame import HelpFrame
 from MenuFrames.EditorFrame import EditorFrame
 from MenuFrames.ProcessFrame import ProcessFrame
 
+
 class MainWindow:
     def __init__(self):
         self.window = tk.Tk()

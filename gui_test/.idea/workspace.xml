@@ -4,8 +4,35 @@
     <list default="true" id="e7684be6-9e45-422c-b37b-df8562f647d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuFrames/EditorFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFrames/EditorFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuFrames/ProcessFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFrames/ProcessFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuFrames/SubFrames/ImageFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFrames/SubFrames/ImageFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../implementacion1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen0.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../implementacion1/output3/imagen0.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen100.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen120.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen140.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen160.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen180.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen20.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../implementacion1/output3/imagen20.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen200.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen220.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen240.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen260.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen280.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen300.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen320.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen340.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen360.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen380.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen40.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../implementacion1/output3/imagen40.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen400.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen420.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen440.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen460.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen480.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen60.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../implementacion1/output3/imagen60.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../implementacion1/output3/imagen80.jpeg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +56,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -43,7 +71,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main_gui">
-    <configuration name="UI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="MainFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gui_test" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -51,11 +79,74 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../INFORMES_ASSD/TP2/EJ8" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MenuFrames" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../INFORMES_ASSD/TP2/EJ8/UI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MenuFrames/MainFrame.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ProcessFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gui_test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MenuFrames" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MenuFrames/ProcessFrame.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="algorithm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gui_test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Algoritmo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Algoritmo/algorithm.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gui_test" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Algoritmo" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Algoritmo/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -85,37 +176,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="gui_test" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.main_gui" />
-      <item itemvalue="Python.UI" />
-      <item itemvalue="Python.scratch" />
+      <item itemvalue="Python.main (1)" />
+      <item itemvalue="Python.ProcessFrame" />
+      <item itemvalue="Python.algorithm" />
+      <item itemvalue="Python.MainFrame" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main_gui" />
-        <item itemvalue="Python.scratch" />
-        <item itemvalue="Python.UI" />
+        <item itemvalue="Python.algorithm" />
+        <item itemvalue="Python.MainFrame" />
+        <item itemvalue="Python.ProcessFrame" />
+        <item itemvalue="Python.main (1)" />
       </list>
     </recent_temporary>
   </component>
