@@ -7,18 +7,19 @@ from Algoritmo import utils as ut
 
 
 class Algorithm:
-    def __init__(self, update_img_callback):
+    def __init__(self, update_img_callback, orig_img_address):
         self.stop_flag = 0
 
         self.callback = update_img_callback
+        self.orig_img_address = orig_img_address
 
-        self.imagen = cv2.imread("OutJobs/testimage.jpeg", 3)  # matriz, cada el es un RGB
+        self.imagen = cv2.imread(self.orig_img_address, 3)  # matriz, cada el es un RGB
         # mascara con area a remover. Zona negra (0,0,0) se remueve, Blanca se deja(255,255,255)
         self.mask = cv2.imread("OutJobs/testmask.jpeg")
 
         self.search_times = 100
-        self.iteraciones = 500
-        self.square_size = 5
+        self.iteraciones = 3000
+        self.square_size = 2
         self.search_square_size = 100
 
         self.new_address = ""

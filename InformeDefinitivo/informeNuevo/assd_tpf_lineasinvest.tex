@@ -50,7 +50,22 @@ Estos m\'etodos, entonces, tienen a grandes rasgos dos criterios a desarrollar:
 \end{itemize}
 
 
-
-
 \subsubsection{M\'etodos h\'ibridos}
+De los dos m\'etodos vistos hasta ahora, basados en difusi\'on o en ejemplares, ninguno es claramente superior al otro para todos los casos, sino que en ciertas circunstancias puede funcionar mejor uno o el otro.
+
+En l\'ineas generales, con los m\'etodos basados en difusi\'on se obtienen buenos resultados para huecos peque\~nos y esparsamente distribuidos. Lo mismo aplica para estructuras con bordes definidos. Por otro lado, los m\'etodos basados en ejemplares funcionan bien para regiones con texturas o patrones regulares.
+
+Como es razonable esperar que una imagen tenga tanto estructuras como texturas, surge una familia de algoritmos que busca aprovechar las ventajas de ambos m\'etodos seg\'un corresponda. Se los conoce, por lo tanto, como m\'etodos h\'ibridos.
+
+A grandes rasgos, existen dos formas de implementar esta idea:
+
+\begin{itemize}
+	\item identificar qu\'e partes de la imagen corresponden a estructuras y qu\'e 
+	partes a texturas, rellenar por difusi\'on o por ejemplares seg\'un corresponda, 
+	y combinar los resultados obtenidos
+	\item combinar ambos m\'etodos mediante el uso de una \'unica funci\'on de
+	energ\'ia (m\'as all\'a del alcance de este trabajo)
+\end{itemize}
+
+
 \end{document}

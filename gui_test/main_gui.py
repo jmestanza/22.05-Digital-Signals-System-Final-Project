@@ -23,6 +23,8 @@ class MainWindow:
 
         self.actualFrame = MainFrame(self)
 
+        self.img_aux_address = ""
+
     def run(self):
         self.window.mainloop()
 
@@ -53,8 +55,9 @@ class MainWindow:
             self.load_title_bkg()
             self.actualFrame = MainFrame(self)
         elif new_req == "editor_process_req":
+            self.img_aux_address = self.actualFrame.get_orig_img_address()
             self.actualFrame.delete_frame()
-            self.actualFrame = ProcessFrame(self)
+            self.actualFrame = ProcessFrame(self, self.img_aux_address)
 
     def exit(self):
         self.actualFrame.delete_frame()

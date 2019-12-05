@@ -55,9 +55,25 @@ En esta sección se procede a trabajar en profundidad el método basado en ejemp
 
 \section{Objetivos futuros}
 
+Se identifican dos direcciones en las que se podr\'ia avanzar para mejorar el algoritmo
+propuesto. 
+
+En primer lugar, podr\'ia reducirse el tiempo de b\'usqueda de los \textit{nearest
+neighbors}. Se consider\'o utilizar el approach aplicado en Patch Match, pero el 
+algoritmo descripto en este paper requiere que el orden de rellenado sea distinto
+al aplicado en este trabajo. Por lo tanto, se deber\'ian tomar las observaciones de
+las que hace uso Patch Match pero aplicarlas de forma tal que sea compatible con
+el orden de rellenado propuesto por Criminisi.
+
+Por otro lado, siendo que se obtuvieron resultados parcialmente satisfactorios tanto
+utilizando el enfoque de Criminisi, basado en ejemplares, como con PDEs, basado en
+difusi\'on, una posible l\'inea para continuar ser\'ia desarrollar un m\'etodo h\'ibrido
+que combine ambos algoritmos, separando las regiones con texturas y estructuras
+y aplicando Criminisi y PDEs respectivamente.
+
 
 \begin{thebibliography}{00}
-\bibitem{b1} A. Criminisi, P. Perez, and K. Toyama, “Region filling and object ´
+\bibitem{b1} A. Criminisi, P. Perez, and K. Toyama, “Region filling and object 
 removal by exemplar-based image inpainting,” IEEE T. Image Process.,
 vol. 13, no. 9, pp. 1200–1212, Sep. 2004.
 
