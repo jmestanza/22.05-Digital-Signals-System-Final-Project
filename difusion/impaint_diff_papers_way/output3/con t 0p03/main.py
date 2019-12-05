@@ -38,7 +38,7 @@ def get_Laplacian(imagen):
     return cv2.convertScaleAbs(dst)
 
 
-def evolve_pixel(i,j,LUV_img, delta_t, epsilon, aux_copy_mat, Ln, gx, gy):
+def evolve_pixel(i,j,LUV_img, delta_t, epsilon, aux_copy_mat, Ln):
     # faltaria pasarlo a las otras coordenadas (no RGB)
 
     comp1 = Ln[i + 1, j].astype(np.float64) - Ln[i - 1, j].astype(np.float64)
@@ -57,9 +57,6 @@ def evolve_pixel(i,j,LUV_img, delta_t, epsilon, aux_copy_mat, Ln, gx, gy):
         dLnvector = np.array([comp1, comp2])
         aux_norm = np.sqrt(np.square(Ix_n_b[k]) + np.square(Iy_n_b[k]) + epsilon)
         Nvectorunit = np.array([-Iy_n_b[k] / aux_norm, Ix_n_b[k] / aux_norm])
-        #aux_norm = np.sqrt(np.square(gx[i,j]) + np.square(gy[i,j]) + epsilon)
-        #Nvectorunit = np.array([-gy[i,j] / aux_norm, gx[i,j] / aux_norm])
-
         beta_n = np.dot(dLnvector, Nvectorunit)
         component_list = []
         if beta_n > 0:
@@ -75,7 +72,6 @@ def evolve_pixel(i,j,LUV_img, delta_t, epsilon, aux_copy_mat, Ln, gx, gy):
             component_list.append(min(Iy_n_f[k], 0))
         comp_vec = np.array(component_list)
         grad_module_n = np.sqrt(np.sum(np.square(comp_vec)))
-        #grad_module_n = np.sqrt(gx[i,j]**2 + gy[i,j]**2)
         g.append(grad_module_n)
         beta.append(beta_n)
         # para ver como poner delta t deberiamos hacer algo como un histograma con el gradiente
@@ -124,6 +120,8 @@ def procesar(imagen, mask, iteraciones):
     delta_t = 0.03 # tunear este parametro segun la imagen
     epsilon = 0.01
 
+
+
     # con esto genere mi nuevo eje de coordenadas
     color_model = BGR_to_color_model(imagen, epsilon)
     imagen = color_model_to_RGB(color_model, 'BGR')
@@ -146,11 +144,9 @@ def procesar(imagen, mask, iteraciones):
                 break
         for borde in cnts:
             Ln = get_Laplacian(imagen)
-            gx, gy = getGradient(cv2.cvtColor(imagen, cv2.COLOR_RGB2GRAY))
-
             for border_point in borde:
                 j, i = border_point[0]
-                evolve_pixel(i, j, color_model, delta_t, epsilon, aux_copy_mat, Ln, gx, gy)
+                evolve_pixel(i, j, color_model, delta_t, epsilon, aux_copy_mat, Ln)
                 #ro_aux = aux_copy_mat[:,:,0]
                 #aux_copy_mat[i,j] = np.array([0,0,0])
                 mask[i, j] = np.array([255, 255, 255]) #este punto del borde ya fue procesado

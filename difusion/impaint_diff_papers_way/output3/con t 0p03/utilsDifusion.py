@@ -208,11 +208,3 @@ def BGR_to_color_model(imagen, eps):
     color_model[:, :, 1] = sin_phi
     color_model[:, :, 2] = sin_psi
     return color_model
-
-
-def getGradient(grey_scale):
-    # gradiente en x e y de la escala de grises, sobel suaviza el gradiente
-    sobel_x = cv2.Sobel(grey_scale, cv2.CV_64F, 1, 0, ksize=5)
-    sobel_y = cv2.Sobel(grey_scale, cv2.CV_64F, 0, 1, ksize=5)
-
-    return sobel_x, sobel_y

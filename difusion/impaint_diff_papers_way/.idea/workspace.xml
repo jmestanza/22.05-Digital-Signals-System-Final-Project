@@ -2,71 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dd7029e-0477-45b8-8365-cf0f0003976e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/main2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../impaint_diff_my_way/main2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen0.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen0.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen10.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen11.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen12.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen13.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen14.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen15.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen16.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen17.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen18.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen19.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen20.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen21.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen22.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen23.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen24.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen25.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen26.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen27.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen28.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen29.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen30.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen31.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen32.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen33.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen34.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen35.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen36.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen37.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen38.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen39.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen4.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen40.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen41.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen42.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen43.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen44.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen45.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen46.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen47.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen48.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen49.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen5.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen50.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen50.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen51.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen6.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen7.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen8.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen9.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen_reconstruir.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagen_reconstruir.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imagenanisotrop.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/imgred.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/output3/mask.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../impaint_diff_my_way/output3/mask.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/testaniso.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../impaint_diff_my_way/utils.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imagenanisotrop.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3/imgred.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testaniso.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen0.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen0.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen10.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen20.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen30.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen40.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen50.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/output3/imagen50.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen60.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen70.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen80.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3/imagen90.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilsDifusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilsDifusion.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +130,7 @@
       <workItem from="1575433613221" duration="5859000" />
       <workItem from="1575439510948" duration="3702000" />
       <workItem from="1575479605236" duration="21856000" />
-      <workItem from="1575518091715" duration="8545000" />
+      <workItem from="1575518091715" duration="11758000" />
     </task>
     <servers />
   </component>
@@ -205,7 +153,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/impaint_diff$main.coverage" NAME="main Coverage Results" MODIFIED="1575504277315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/impaint_diff_papers_way$testaniso.coverage" NAME="testaniso Coverage Results" MODIFIED="1575518201200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/impaint_diff_papers_way$main.coverage" NAME="main Coverage Results" MODIFIED="1575526694190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/impaint_diff_papers_way$main.coverage" NAME="main Coverage Results" MODIFIED="1575529921736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/impaint_diff$testaniso.coverage" NAME="testaniso Coverage Results" MODIFIED="1575505549068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
