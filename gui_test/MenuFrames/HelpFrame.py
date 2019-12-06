@@ -16,7 +16,9 @@ class HelpFrame:
 
         self.helpText = tk.Text(self.helpFrame, height=10, width=45, font=('Algerian', 12))
         self.helpText.pack()
-        self.helpText.insert(tk.END, "Aca deberia ir el instructivo de como carajo se usa :(")
+        self.helpText.insert(tk.END, "En el editor, elegir una imagen tipo JPEG. \n"
+                                     "Para marcar el area a tratar: \n Definir los puntos en sentido horario o antiho-rario. \n "
+                                     "Presionar enter para cerrarla. \n Se puede definir mas de una region. \n")
         self.helpText.config(state="disabled")
 
         self.backButton = tk.Button(self.helpFrame, text="Volver", fg="black", command=self.back_req)
