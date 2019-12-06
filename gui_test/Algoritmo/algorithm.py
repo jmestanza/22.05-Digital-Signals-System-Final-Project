@@ -17,10 +17,10 @@ class Algorithm:
         # mascara con area a remover. Zona negra (0,0,0) se remueve, Blanca se deja(255,255,255)
         self.mask = cv2.imread("OutJobs/testmask.jpeg")
 
-        self.search_times = 100
+        self.search_times = 1000
         self.iteraciones = 3000
-        self.square_size = 2
-        self.search_square_size = 100
+        self.square_size = 3
+        self.search_square_size = 30
 
         self.new_address = ""
 
