@@ -1,13 +1,14 @@
 difusion_kernel 
 tiene pruebas con convolucion de imagenes con kernels
-difusion_updated
-tiene la version de Julio que no funcionaba muy bien, pero hacía algo
-difusion_viejo
-version de julio que no hace un carajo
 
 impaint_diff_my_way
 tiene lo que decia el paper que esta dentro de esa carpeta
 solo que modificado un poco a mi parecer
 
 impaint_diff_papers_way
-tiene lo que dice el paper y no estaria funcionando :C
+es la version que entregamos que hizo ari (agarraba el dominio
+ y le aplicaba difusion)
+
+impaint_diff_papers_way_joaco
+esta es la version que estaba haciendo yo, que agarraba lso bordes
+e iba propagando para adentro (de a bordes, con un "ping-pong buffer)
