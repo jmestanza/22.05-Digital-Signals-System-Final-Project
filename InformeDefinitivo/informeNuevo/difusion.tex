@@ -86,6 +86,31 @@ Con todo esto en mente, se procedió a realizar una serie de pruebas con un algo
 \caption{En la izquierda se encuentra la foto original y en la derecha se puede ver el resultado de haber aplicado difusión anisotrópica tras 40 iteraciones}
 \label{fig:compAnisotrop}
 \end{figure}
-Se observa en la figura \ref{fig:compAnisotrop} que a medida que avanza el algoritmo ciertos bordes prevalecen. Sin embargo, uno de los objetivos finales del proyecto es poder aplicar difusión en una región desconocida por lo que se optó por seguir investigando sobre alternativas que realicen inpainting usando  difusión con EDPs.
+Se observa en la figura \ref{fig:compAnisotrop} que a medida que avanza el algoritmo ciertos bordes prevalecen. Sin embargo, uno de los objetivos finales del proyecto es poder aplicar difusión en una región desconocida por lo que se optó por seguir investigando sobre alternativas que realicen inpainting usando  difusión con EDPs. 
+
+
+El problema a abordar con inpainting fue desarrollado por Bertalmio et al. en el año 2000, cuyo trabajo está basado en el uso de un modelo anisotrópico que propaga los Laplacianos de la imagen de la vecindad próxima hacia adentro de la región. La dirección de la propagación está dada por la dirección de los isofotos estimados mediante la componente perpendicular del gradiente en cada punto.
+
+La ecuación a resolver numéricamente es:
+\[
+  \frac{\partial I}{\partial t} = \Delta(\nabla I)\Delta I^{\perp}
+\]
+
+Donde I es la intensidad de la imagen dentro de la región la cual luego de varias iteraciones llega a un estacio estacionario ($\Delta(\nabla I)\Delta I^{\perp} = 0$), lo que implica que los Laplacianos permanecen constantes  (no hay variaciones según el gradiente $\nabla$) en las direcciones de $\nabla I^{\perp} $ del isofoto. Esto se puede interpretar como que la información de la imagen es propagada hacia la región de forma tal de preservar la dirección de los isofotos.
+Los métodos de difusión tienden a prolongar estructuras (por ejemplo, con los isofotos) que llegan a la región a rellenar.  Es por esta razón que estos métodos sirven para situaciones donde se quiere propagar fuertes estructuras o rellenar huecos pequeños. Sin embargo, esta técnica no sirve para imagenes texturizadas, especialmente si la región a rellenar es grande. A pesar de que se intenta preservar los bordes, después de unas iteraciones de difusión, la región aparece suave con un efecto de blur cuando la región a restaurar es grande. 
+
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[scale=0.38]{image0.png}
+\includegraphics[scale=0.38]{image150.png}
+\includegraphics[scale=2.4]{image0_zoom.png}
+\includegraphics[scale=2.5]{image150_zoom.png}
+\par\end{centering}
+\caption{En la izquierda se encuentra la foto original y en la derecha se puede ver el resultado de haber aplicado el algoritmo desarrollado por Bertalmio tras 200 iteraciones, debajo de las mismas está la imagen con zoom en la zona donde se aplicó difusión}
+
+\label{fig:difusionnuestro}
+\end{figure}
+Se puede observar que el algoritmo utilizado no es óptimo, pues, en la práctica se encontró que había que regular distintas constantes que afectaban la convergencia del algoritmo, tales como $\Delta t$ que regula la velocidad de propagación, a su vez se utilizó  la función de Leclerc (mencionada en este trabajo) para regular la actualización de $I_t$ dado que grandes gradientes afectaban en gran medida a la convergencia del algoritmo (controlado por la constante K).
+Se deduce que, si bien el algoritmo implementado a grandes rasgos cumple lo deseado (la propagación de los isofotos), la manipulación de los metaparámetros no fue la adecuada para esta imagen en específico.
 
 \end{document}

@@ -6,9 +6,9 @@ from utilsDifusion import *
 import matplotlib.pyplot as plt
 
 
-img = cv2.imread('output3/imagen.jpeg', 3)# matriz, cada el es un RGB
+img = cv2.imread('output3/testimage2.jpeg', 3)# matriz, cada el es un RGB
 # mascara con area a remover. Zona negra (0,0,0) se remueve, Blanca se deja(255,255,255)
-mask = cv2.imread("output3/mask.jpeg")
+mask = cv2.imread("output3/testmask.jpeg")
 
 #lado de los cuadrados que utilizaremos para rellenar la imagen
 square_size = 5
@@ -201,14 +201,14 @@ def procesar(imagen, mask, iteraciones):
             laplaciano_dx = cv2.Sobel(laplaciano, cv2.CV_64F, 1, 0, ksize=3)
             laplaciano_dy = cv2.Sobel(laplaciano, cv2.CV_64F, 0, 1, ksize=3)
 
-            dt = 0.00001
-            alpha = 0.000000000000000001
+            dt = 0.000001
+            alpha = 0.0001
 
             try:
                 #norma_delta_i_2 = np.sqrt(sobel_x * sobel_x + sobel_y * sobel_y)
                 di = dt * (laplaciano_dx * sobel_y + laplaciano_dy * sobel_x)
 
-                fix_value = np.where((canal < 5) | (canal > 251) | (mask_value == 0), np.zeros(canal.shape), di)
+                fix_value = np.where((canal < 5) | (canal > 251) | (mask_value == 0), np.zeros(canal.shape), np.ones(canal.shape)*di)
 
                 canal += fix_value
 
@@ -218,12 +218,12 @@ def procesar(imagen, mask, iteraciones):
                 #di = dt * (laplaciano_dx * sobel_y + laplaciano_dy * sobel_x)
                 pass
 
-
-        im = Image.fromarray(cv2.cvtColor(imagen.astype(np.uint8), cv2.COLOR_BGR2RGB))
-        im.save("output5/image%d.png" % iteracion)
-        print("Iteracion %d terminada" % iteracion)
-            # im = Image.fromarray(sobel_yy).convert('RGB')
-            # im.save("output_yy%d.png" % channel)
+        if iteracion % 50 == 0:
+            im = Image.fromarray(cv2.cvtColor(imagen.astype(np.uint8), cv2.COLOR_BGR2RGB))
+            im.save("output5/image%d.png" % iteracion)
+            print("Iteracion %d terminada" % iteracion)
+                # im = Image.fromarray(sobel_yy).convert('RGB')
+                # im.save("output_yy%d.png" % channel)
 
         #print("hello world")
 
